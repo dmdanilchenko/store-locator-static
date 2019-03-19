@@ -5,6 +5,19 @@
 
 @import "compass/reset";
 
-p{
-	color: blue;
+.root{
+	max-width: 1635px;
+	margin: 0 auto;
+}
+
+.filters{
+	width: 480px;
+	float: left;
+	height: 100vh;
+}
+
+#map{
+	width: calc( 100% - 480px );
+	margin: 0 0 0 480px;
+	height: 100vh;
 }
