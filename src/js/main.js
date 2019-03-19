@@ -58,8 +58,8 @@ function initMap() {
 	});
 	
 	fillCountries();
-	fillCities(countrySelect.options[countrySelect.selectedIndex].value);
-	searchLocations();
+
+
 }
 
 function searchLocations() {
@@ -69,7 +69,7 @@ function searchLocations() {
    if (status == google.maps.GeocoderStatus.OK) {
 	searchLocationsNear(results[0].geometry.location);
    } else {
-	 searchLocationsNear();
+	searchLocationsNear();
    }
  });
 }
@@ -124,7 +124,7 @@ function clearLocations() {
 function searchLocationsNear(center) {
 	clearLocations();
 	
-	var markerNodes = data.boutiques;
+	var markerNodes = getFilteredBoutiques();
 	var bounds = new google.maps.LatLngBounds();
 	for (var i = 0; i < markerNodes.length; i++) {
 		var id = markerNodes[i].id;
@@ -135,7 +135,7 @@ function searchLocationsNear(center) {
 		parseFloat(markerNodes[i].lat),
 		parseFloat(markerNodes[i].lng));
 
-		/* createOption */(name, distance, i);
+		/* createOption(name, distance, i); */
 		
 		createBoutiqueListItem(name, address, i);
 		
@@ -180,8 +180,36 @@ function getData(){
 	}
 }
 
+function getFilteredBoutiques(){
+	
+	var filteredBoutiques = [];
+	var currentCountry 	= countrySelect.options[countrySelect.selectedIndex].value;
+	var currentCity 	= citySelect.options[citySelect.selectedIndex].value;
+	
+	if(currentCountry === 'all'&&currentCity === 'all'){
+		filteredBoutiques = data.boutiques.filter(function(boutique){
+			return true;
+		});
+	}else if(currentCity === 'all'){
+		filteredBoutiques = data.boutiques.filter(function(boutique){
+			return boutique.country === currentCountry;
+		});
+	}else{	
+		filteredBoutiques = data.boutiques.filter(function(boutique){
+			return boutique.country === currentCountry&&boutique.city === currentCity;
+		});
+	}
+	
+	return filteredBoutiques;
+}
+
 function fillCountries(){
-		  
+	
+	var option = document.createElement("option");
+	option.value = 'all';
+	option.innerHTML = 'Select your Country';
+	countrySelect.appendChild(option); 
+	
 	for(var i = 0; i < countries.length; i++){
 		
 		  var option = document.createElement("option");
@@ -189,6 +217,8 @@ function fillCountries(){
 		  option.innerHTML = countries[i].name;
 		  countrySelect.appendChild(option);
 	}
+	
+	fillCities(countrySelect.options[countrySelect.selectedIndex].value);
 	
 	$('#country-select').on('change', function(){
 		fillCities(countrySelect.options[countrySelect.selectedIndex].value);
@@ -202,20 +232,28 @@ function fillCities(countryId){
 	
 	var option = document.createElement("option");
 	option.value = 'all';
-	option.innerHTML = 'All cities';
+	option.innerHTML = 'Select your City';
 	citySelect.appendChild(option);
 	
-	const currentCountry = countries.filter(function(country){
+	var currentCountry = countries.filter(function(country){
 		return country.id === countryId;
 	});
 		
-	for(var i = 0; i < currentCountry[0].cities.length; i++){
+	if(currentCountry.length){
 		
-		  option = document.createElement("option");
-		  option.value = currentCountry[0].cities[i];
-		  option.innerHTML = currentCountry[0].cities[i];
-		  citySelect.appendChild(option);
+		for(var i = 0; i < currentCountry[0].cities.length; i++){
+			option = document.createElement("option");
+			option.value = currentCountry[0].cities[i];
+			option.innerHTML = currentCountry[0].cities[i];
+			citySelect.appendChild(option);
+		}
 	}
+	
+	searchLocations();
+	
+	$('#city-select').on('change', function(){
+		searchLocations();
+	});
 }
 
 function createMarker(latlng, name, address) {
