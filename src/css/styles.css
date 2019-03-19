@@ -68,19 +68,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 8, ../scss/styles.scss */
-.root {
-  max-width: 1635px;
-  margin: 0 auto;
-}
-
-/* line 13, ../scss/styles.scss */
 .filters {
   width: 480px;
   float: left;
   height: 100vh;
 }
 
-/* line 19, ../scss/styles.scss */
+/* line 14, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;
