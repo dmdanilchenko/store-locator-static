@@ -11,29 +11,55 @@
 })(jQuery); */
 
 var map;
+var data;
+var countries = [];
+var cities = [];
 var markers = [];
 var infoWindow;
-var locationSelect;
+/* var locationSelect; */
+var countrySelect;
+var citySelect;
+var boutiqueList;
 
 function initMap() {
-  var sydney = {lat: -33.863276, lng: 151.107977};
-  map = new google.maps.Map(document.getElementById('map'), {
-	center: sydney,
-	zoom: 11,
-	mapTypeId: 'roadmap',
-	mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
-  });
-  infoWindow = new google.maps.InfoWindow();
+	
+	data = getData();	
+	countries = data.countries;
+	
+	
+	var sydney = {lat: -33.863276, lng: 151.107977};
+	map = new google.maps.Map(document.getElementById('map'), {
+		center: sydney,
+		zoom: 11,
+		mapTypeId: 'roadmap',
+		mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+	});
+	infoWindow = new google.maps.InfoWindow();
 
-  searchButton = document.getElementById("searchButton").onclick = searchLocations;
+	searchButton = document.getElementById("searchButton").onclick = searchLocations;
 
-  locationSelect = document.getElementById("locationSelect");
-  locationSelect.onchange = function() {
+	/* locationSelect = document.getElementById("locationSelect"); */
+	countrySelect 	= document.getElementById("country-select");
+	citySelect 		= document.getElementById("city-select");
+	boutiqueList 	= document.getElementById("boutique-list");
+	
+	/*   locationSelect.onchange = function() {
 	var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
 	if (markerNum != "none"){
 	  google.maps.event.trigger(markers[markerNum], 'click');
 	}
-  };
+	}; */
+
+	$('body').on('click', '#boutique-list>li', function(){
+		var markerNum = $(this).data( "id" );;
+		if (markerNum != "none"){
+			google.maps.event.trigger(markers[markerNum], 'click');
+		}
+	});
+	
+	fillCountries();
+	fillCities(countrySelect.options[countrySelect.selectedIndex].value);
+	searchLocations();
 }
 
 function searchLocations() {
@@ -43,26 +69,28 @@ function searchLocations() {
    if (status == google.maps.GeocoderStatus.OK) {
 	searchLocationsNear(results[0].geometry.location);
    } else {
-	 alert(address + ' not found');
+	 searchLocationsNear();
    }
  });
 }
 
 function clearLocations() {
- infoWindow.close();
- for (var i = 0; i < markers.length; i++) {
-   markers[i].setMap(null);
- }
- markers.length = 0;
+	infoWindow.close();
+	for (var i = 0; i < markers.length; i++) {
+		markers[i].setMap(null);
+	}
+	markers.length = 0;
 
- locationSelect.innerHTML = "";
- var option = document.createElement("option");
- option.value = "none";
- option.innerHTML = "See all results:";
- locationSelect.appendChild(option);
+	/* locationSelect.innerHTML = ""; */
+/* 	var option = document.createElement("option");
+	option.value = "none";
+	option.innerHTML = "See all results:"; */
+	/* locationSelect.appendChild(option); */
+	
+	boutiqueList.innerHTML = "";
 }
 
-function searchLocationsNearPHP(center) {
+/* function searchLocationsNearPHP(center) {
 	clearLocations();
 
 	var radius = document.getElementById('radiusSelect').value;
@@ -91,12 +119,12 @@ function searchLocationsNearPHP(center) {
 			google.maps.event.trigger(markers[markerNum], 'click');
 		};
 	});
-}
+} */
 
 function searchLocationsNear(center) {
 	clearLocations();
 	
-	var markerNodes = getMarkers();
+	var markerNodes = data.boutiques;
 	var bounds = new google.maps.LatLngBounds();
 	for (var i = 0; i < markerNodes.length; i++) {
 		var id = markerNodes[i].id;
@@ -107,31 +135,87 @@ function searchLocationsNear(center) {
 		parseFloat(markerNodes[i].lat),
 		parseFloat(markerNodes[i].lng));
 
-		createOption(name, distance, i);
+		/* createOption */(name, distance, i);
+		
+		createBoutiqueListItem(name, address, i);
+		
 		createMarker(latlng, name, address);
 		bounds.extend(latlng);
 	}
 	map.fitBounds(bounds);
-	locationSelect.style.visibility = "visible";
+	/* locationSelect.style.visibility = "visible";
 	locationSelect.onchange = function() {
 		var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
 		google.maps.event.trigger(markers[markerNum], 'click');
-	};
+	}; */
 }
 
-function getMarkers(){
-	return [
-	{id:1, name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260,distance:52.762480400236754},
-	{id:2, name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090,distance:51.30359905145628},
-	{id:3, name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591,distance:65.60640686758967},
-	{id:4, name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609,distance:56.05760641917},
-	{id:5, name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706,distance:65.79696354609702},
-	{id:6, name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707,distance:56.731386263386064},
-	{id:7, name:'Perfect Fit',address: "Darley Rd, Randwick NSW 2031",lat:-33.903557,lng: 151.237732,distance:63.92017421824136},
-	{id:8, name:'Buena Ropa!',address: "Brodie St, Rydalmere NSW 2116",lat:-33.815521,lng: 151.026642,distance:56.37149740204364},
-	{id:9, name:'Coxcomb and Lily Boutique',address: "Ferrers Rd, Horsley Park NSW 2175",lat:-33.829525,lng: 150.873764,distance:57.77872495434665},
-	{id:10, name:'Moda Couture',address: "Northcote Rd, Glebe NSW 2037",lat:-33.873882,lng: 151.177460,distance:61.243992108021324}
-	];	
+function getData(){
+	//rewrite this to get data using AJAX 
+	return {
+		countries:[
+			{
+				id: 'IT',
+				name: 'Italy',
+				cities: ['Rome', 'Milan']
+			},
+			{
+				id: 'US',
+				name: 'USA',
+				cities: ['New York', 'Miami', 'Dallas']
+			},
+		],
+		boutiques: [
+			{id:1, country: 'US', city:'New York', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260,distance:52.762480400236754},
+			{id:2, country: 'US', city:'New York', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090,distance:51.30359905145628},
+			{id:3, country: 'US', city:'New York', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591,distance:65.60640686758967},
+			{id:4, country: 'US', city:'Miami', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609,distance:56.05760641917},
+			{id:5, country: 'US', city:'Miami', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706,distance:65.79696354609702},
+			{id:6, country: 'US', city:'Dallas', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707,distance:56.731386263386064},
+			{id:7, country: 'IT', city:'Rome', name:'Perfect Fit',address: "Darley Rd, Randwick NSW 2031",lat:-33.903557,lng: 151.237732,distance:63.92017421824136},
+			{id:8, country: 'IT', city:'Rome', name:'Buena Ropa!',address: "Brodie St, Rydalmere NSW 2116",lat:-33.815521,lng: 151.026642,distance:56.37149740204364},
+			{id:9, country: 'IT', city:'Milan', name:'Coxcomb and Lily Boutique',address: "Ferrers Rd, Horsley Park NSW 2175",lat:-33.829525,lng: 150.873764,distance:57.77872495434665},
+			{id:10, country: 'IT', city:'Milan', name:'Moda Couture',address: "Northcote Rd, Glebe NSW 2037",lat:-33.873882,lng: 151.177460,distance:61.243992108021324}
+		]
+	}
+}
+
+function fillCountries(){
+		  
+	for(var i = 0; i < countries.length; i++){
+		
+		  var option = document.createElement("option");
+		  option.value = countries[i].id;
+		  option.innerHTML = countries[i].name;
+		  countrySelect.appendChild(option);
+	}
+	
+	$('#country-select').on('change', function(){
+		fillCities(countrySelect.options[countrySelect.selectedIndex].value);
+	});
+	
+}
+
+function fillCities(countryId){
+	
+	citySelect.innerHTML = "";
+	
+	var option = document.createElement("option");
+	option.value = 'all';
+	option.innerHTML = 'All cities';
+	citySelect.appendChild(option);
+	
+	const currentCountry = countries.filter(function(country){
+		return country.id === countryId;
+	});
+		
+	for(var i = 0; i < currentCountry[0].cities.length; i++){
+		
+		  option = document.createElement("option");
+		  option.value = currentCountry[0].cities[i];
+		  option.innerHTML = currentCountry[0].cities[i];
+		  citySelect.appendChild(option);
+	}
 }
 
 function createMarker(latlng, name, address) {
@@ -147,12 +231,25 @@ function createMarker(latlng, name, address) {
   markers.push(marker);
 }
 
-function createOption(name, distance, num) {
+/* function createOption(name, distance, num) {
   var option = document.createElement("option");
   option.value = num;
   option.innerHTML = name;
   locationSelect.appendChild(option);
+} */
+
+function createBoutiqueListItem(name, address, id){
+	
+	var li = document.createElement("li");
+	li.innerHTML = '<a href="#">'+
+						'<div class="name">'+name+'</div>'+
+						'<div class="address">'+address+'</div>'+
+					'</a>';
+					
+	li.dataset.id = id;
+	boutiqueList.appendChild(li);
 }
+	
 
 function downloadUrl(url, callback) {
   var request = window.ActiveXObject ?
