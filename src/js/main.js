@@ -63,15 +63,16 @@ function initMap() {
 }
 
 function searchLocations() {
- var address = document.getElementById("addressInput").value;
- var geocoder = new google.maps.Geocoder();
- geocoder.geocode({address: address}, function(results, status) {
-   if (status == google.maps.GeocoderStatus.OK) {
-	searchLocationsNear(results[0].geometry.location);
-   } else {
-	searchLocationsNear();
-   }
- });
+	var address = document.getElementById("addressInput").value;
+	var geocoder = new google.maps.Geocoder();
+	
+	geocoder.geocode({address: address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			searchLocationsNear(results[0].geometry.location);
+		} else {
+			searchLocationsNear();
+		}
+	});
 }
 
 function clearLocations() {
@@ -126,6 +127,9 @@ function searchLocationsNear(center) {
 	
 	var markerNodes = getFilteredBoutiques();
 	var bounds = new google.maps.LatLngBounds();
+	
+	$('.boutiques-qty .qty').html(markerNodes.length);
+	
 	for (var i = 0; i < markerNodes.length; i++) {
 		var id = markerNodes[i].id;
 		var name = markerNodes[i].name;
@@ -142,6 +146,7 @@ function searchLocationsNear(center) {
 		createMarker(latlng, name, address);
 		bounds.extend(latlng);
 	}
+
 	map.fitBounds(bounds);
 	/* locationSelect.style.visibility = "visible";
 	locationSelect.onchange = function() {
@@ -166,16 +171,16 @@ function getData(){
 			},
 		],
 		boutiques: [
-			{id:1, country: 'US', city:'New York', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260,distance:52.762480400236754},
-			{id:2, country: 'US', city:'New York', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090,distance:51.30359905145628},
-			{id:3, country: 'US', city:'New York', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591,distance:65.60640686758967},
-			{id:4, country: 'US', city:'Miami', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609,distance:56.05760641917},
-			{id:5, country: 'US', city:'Miami', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706,distance:65.79696354609702},
-			{id:6, country: 'US', city:'Dallas', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707,distance:56.731386263386064},
-			{id:7, country: 'IT', city:'Rome', name:'Perfect Fit',address: "Darley Rd, Randwick NSW 2031",lat:-33.903557,lng: 151.237732,distance:63.92017421824136},
-			{id:8, country: 'IT', city:'Rome', name:'Buena Ropa!',address: "Brodie St, Rydalmere NSW 2116",lat:-33.815521,lng: 151.026642,distance:56.37149740204364},
-			{id:9, country: 'IT', city:'Milan', name:'Coxcomb and Lily Boutique',address: "Ferrers Rd, Horsley Park NSW 2175",lat:-33.829525,lng: 150.873764,distance:57.77872495434665},
-			{id:10, country: 'IT', city:'Milan', name:'Moda Couture',address: "Northcote Rd, Glebe NSW 2037",lat:-33.873882,lng: 151.177460,distance:61.243992108021324}
+			{id:1, country: 'US', city:'New York', type:'Etro boutique', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260,distance:52.762480400236754},
+			{id:2, country: 'US', city:'New York', type:'Etro boutique', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090,distance:51.30359905145628},
+			{id:3, country: 'US', city:'New York', type:'Etro outlet', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591,distance:65.60640686758967},
+			{id:4, country: 'US', city:'Miami', type:'Etro boutique', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609,distance:56.05760641917},
+			{id:5, country: 'US', city:'Miami', type:'Etro outlet', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706,distance:65.79696354609702},
+			{id:6, country: 'US', city:'Dallas', type:'Etro boutique', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707,distance:56.731386263386064},
+			{id:7, country: 'IT', city:'Rome', type:'Etro outlet', name:'Perfect Fit',address: "Darley Rd, Randwick NSW 2031",lat:-33.903557,lng: 151.237732,distance:63.92017421824136},
+			{id:8, country: 'IT', city:'Rome', type:'Etro boutique', name:'Buena Ropa!',address: "Brodie St, Rydalmere NSW 2116",lat:-33.815521,lng: 151.026642,distance:56.37149740204364},
+			{id:9, country: 'IT', city:'Milan', type:'Etro boutique', name:'Coxcomb and Lily Boutique',address: "Ferrers Rd, Horsley Park NSW 2175",lat:-33.829525,lng: 150.873764,distance:57.77872495434665},
+			{id:10, country: 'IT', city:'Milan', type:'Etro outlet', name:'Moda Couture',address: "Northcote Rd, Glebe NSW 2037",lat:-33.873882,lng: 151.177460,distance:61.243992108021324}
 		]
 	}
 }
