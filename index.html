@@ -32,36 +32,31 @@
                     <select id="city-select"></select>
                 </div>
                 <div class="params-box-bottom-part">
-                    <div class="boutique-count-wrapper">
+                    <div class="boutiques-qty boutique-count-wrapper">
                         <p class="label">boutiques</p>
-                        <p class="count-msg"><span id="boutique-count">00</span>&nbsp;<span>boutique trovate</span></p>
+                        <p class="count-msg"><span class="qty">00</span>&nbsp;<span>boutique trovate</span></p>
                     </div>
-                    <a href="#" class="filters-link"><span class="plus-icn">+</span>Filters</a>
+                    <div class="filter-by-type">
+                        <a href="#" class="open filters-link"><span class="plus-icn">+</span>Filters</a>
+                    </div>
+
                 </div>
 
 			</div>
 			
-			<div>
-				<div class="boutiques-qty">
-					<p>Boutiques:</p> 
-					<span class="qty">0</span> boutoque trovate
-				</div>
-				
-				<div class="filter-by-type">
-					<button class="open">+ filters</button>
-					<div class="filter-by-type-popup">
-						<ul>
-						</ul>
-						<button class="close">X</button>
-						<button class="apply">Apply</button>
-					</div>
-				</div>
-			</div>
+			<div></div>
 			
             <div class="search-result-box">
-                <!-- <div>
-                    <select id="locationSelect" style="width: 10%; visibility: hidden"></select>
-                </div> -->
+
+                <div class="filter-by-type popup-wrapper">
+                    <div class="filter-by-type-popup">
+                        <ul>
+                        </ul>
+                        <button class="close"></button>
+                        <button class="apply">Apply</button>
+                    </div>
+                </div>
+
                 <ul id="boutique-list">
 
                 </ul>
