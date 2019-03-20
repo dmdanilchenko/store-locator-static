@@ -3,7 +3,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
-/* line 5, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,45 +25,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -80,8 +80,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   flex-direction: column;
   padding: 10px 30px 20px 59px;
   background-color: #f5f5f5;
+  max-height: 315px;
 }
-/* line 35, ../scss/styles.scss */
+/* line 36, ../scss/styles.scss */
 .filters .search-params-box input, .filters .search-params-box select {
   height: 42px;
   padding: 0;
@@ -114,53 +115,159 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .filters .search-params-box input:-ms-input-placeholder, .filters .search-params-box select:-ms-input-placeholder {
   color: #000;
 }
-/* line 47, ../scss/styles.scss */
+/* line 48, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper, .filters .search-params-box select {
   margin: 10px 0;
-  border: 1px solid #000;
+  border: 1px solid #717171;
 }
-/* line 52, ../scss/styles.scss */
+/* line 53, ../scss/styles.scss */
 .filters .search-params-box .select-wrapp select {
   width: 100%;
+  cursor: pointer;
+  background: url(../icons/icon-arrow-down.png) no-repeat right;
+  -webkit-appearance: none;
+  background-position-x: 360px;
+  background-size: 15px;
 }
-/* line 56, ../scss/styles.scss */
+/* line 62, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper {
   display: flex;
   flex-direction: row;
 }
-/* line 59, ../scss/styles.scss */
+/* line 65, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text] {
   flex-grow: 2;
   border: none;
 }
-/* line 62, ../scss/styles.scss */
+/* line 68, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text]:focus {
   outline: none;
 }
-/* line 66, ../scss/styles.scss */
+/* line 72, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button] {
   border-top: none;
   border-bottom: none;
-  border-left: 1px solid #000;
+  border-left: 1px solid #717171;
   border-right: none;
   background: transparent;
-}
-/* line 75, ../scss/styles.scss */
-.filters .search-result-box {
-  padding: 20px 30px 20px 59px;
+  cursor: pointer;
 }
 /* line 79, ../scss/styles.scss */
+.filters .search-params-box .input-btns-wrapper input[type=button]#searchButton {
+  background-image: url(../icons/search-icon.svg);
+  background-position: 7px 9px;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  width: 40px;
+}
+/* line 86, ../scss/styles.scss */
+.filters .search-params-box .input-btns-wrapper input[type=button]#navigatorButton {
+  background-image: url(../icons/nav-arrrow.png);
+  background-position: 8px 11px;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  width: 40px;
+}
+/* line 95, ../scss/styles.scss */
+.filters .search-params-box .params-box-bottom-part {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+/* line 99, ../scss/styles.scss */
+.filters .search-params-box .params-box-bottom-part .boutique-count-wrapper {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+}
+/* line 101, ../scss/styles.scss */
+.filters .search-params-box .params-box-bottom-part .boutique-count-wrapper .label {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+/* line 106, ../scss/styles.scss */
+.filters .search-params-box .params-box-bottom-part .filters-link {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  color: #000;
+  font-weight: normal;
+  line-height: 2.08;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  /*				&:before {
+  					content: '+';
+  					@include font-open-sans($color:#777573,$size:19px);
+  					margin-right: 5px;
+  					display: inline-block;
+  				}*/
+}
+/* line 115, ../scss/styles.scss */
+.filters .search-params-box .params-box-bottom-part .filters-link .plus-icn {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 19px;
+  color: #777573;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-right: 5px;
+}
+/* line 122, ../scss/styles.scss */
+.filters .search-result-box {
+  padding: 20px 30px 20px 59px;
+  overflow-y: scroll;
+  max-height: calc(100% - 315px);
+}
+/* line 127, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li {
+  height: 100px;
+}
+/* line 129, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li:after {
+  content: '';
+  background: #dddddd;
+  width: 100%;
+  height: 1px;
+}
+/* line 135, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  color: #000;
+  font-weight: normal;
+  line-height: 1.42;
+  letter-spacing: normal;
+  text-decoration: none;
+}
+/* line 138, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a .name {
+  text-transform: uppercase;
+}
+/* line 141, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a .address {
+  font-size: 13px;
+}
+/* line 149, ../scss/styles.scss */
 .filters .filter-by-type-popup {
   display: none;
 }
-/* line 82, ../scss/styles.scss */
+/* line 152, ../scss/styles.scss */
 .filters .filter-by-type-popup.active {
   display: block;
 }
 
-/* line 89, ../scss/styles.scss */
+/* line 159, ../scss/styles.scss */
 #map {
-  width: calc( 100% - 540px );
+  width: calc( 100% - 480px );
   margin: 0 0 0 480px;
   height: 100vh;
 }
