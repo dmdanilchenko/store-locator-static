@@ -11,6 +11,9 @@
 })(jQuery); */
 
 var map;
+var directions;
+var originAutocomplete;
+var destinationAutocomplete;
 var data;
 var countries = [];
 var cities = [];
@@ -36,8 +39,9 @@ function initMap() {
 	});
 	infoWindow = new google.maps.InfoWindow();
 
-	searchButton = document.getElementById("searchButton").onclick = selectByAddress;
 
+	searchButton = document.getElementById("searchButton").onclick = selectByAddress;
+	navigatorButton = document.getElementById("navigatorButton").onclick = directionTo;
 	/* locationSelect = document.getElementById("locationSelect"); */
 	countrySelect 	= document.getElementById("country-select");
 	citySelect 		= document.getElementById("city-select");
@@ -51,21 +55,31 @@ function initMap() {
 	}; */
 
 	$('body').on('click', '#boutique-list>li', function(){
-		var markerNum = $(this).data( "id" );;
-		if (markerNum != "none"){
+		var markerId = $(this).data( "id" );;
+		if (markerId != "none"){
 			
 			$('#boutique-list>li').each(function(){
 				$(this).removeClass('active');
 			});
 			
 			$(this).addClass('active');
-			google.maps.event.trigger(markers[markerNum], 'click');
+			
+			var foundMarkers = markers.filter(function(marker){
+				return marker.id === markerId;
+			});
+			
+			if(foundMarkers.length){
+				google.maps.event.trigger(foundMarkers[0], 'click');
+			}
+
 		}
 	});
 	
 	fillCountries();
 	fillTypeFilter();
-	initAutocomplete();
+	initAddressAutocomplete();
+	
+	directions = new AutocompleteDirectionsHandler(map);
 }
 
 function searchLocations() {
@@ -86,6 +100,10 @@ function clearLocations() {
 	for (var i = 0; i < markers.length; i++) {
 		markers[i].setMap(null);
 	}
+	
+	directions.directionsDisplay.set('directions', null);
+
+	
 	markers.length = 0;
 
 	/* locationSelect.innerHTML = ""; */
@@ -106,17 +124,80 @@ function selectByAddress(){
 	});
 	
 	if(boutiquesByAddress.length){
-		var markerNum = boutiquesByAddress[0].id;
-		if (markerNum != "none"){
+		var markerId = boutiquesByAddress[0].id;
+		if (markerId != "none"){
 			
 			$('#boutique-list>li').each(function(){
 				$(this).removeClass('active');
 			});
 			
-			$('#boutique-list>li[data-id="'+markerNum+'"]').addClass('active');
-			google.maps.event.trigger(markers[markerNum], 'click');
+			$('#boutique-list>li[data-id="'+markerId+'"]').addClass('active');
+			var foundMarkers = markers.filter(function(marker){
+				return marker.id === markerId;
+			});
+			
+			if(foundMarkers.length){
+				google.maps.event.trigger(foundMarkers[0], 'click');
+			}
 		}
 	}
+}
+
+function directionTo(){
+	$('#map .controls').addClass('visible');
+	
+	$('#map #destination-input').val($('#addressInput').val());
+	/* google.maps.event.trigger(destinationAutocomplete, 'place_changed'); */
+	if($('#origin-input').val()===''){
+		
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+		  navigator.geolocation.getCurrentPosition(function(position) {
+			var pos = {
+			  lat: position.coords.latitude,
+			  lng: position.coords.longitude
+			};
+
+			/* infoWindow.setPosition(pos);
+			infoWindow.setContent('Location found.');
+			infoWindow.open(map);
+			map.setCenter(pos); */
+			
+			var latlng = {lat: position.coords.latitude, lng: position.coords.longitude};
+			var geocoder = new google.maps.Geocoder();
+			
+			geocoder.geocode({'location': latlng}, function(results, status) {
+			  if (status === 'OK') {
+				if (results[0]) {
+				  /* map.setZoom(11); */
+				  var marker = new google.maps.Marker({
+					position: latlng,
+					map: map
+				  });
+				  /* infowindow.setContent(results[0].formatted_address);
+				  infowindow.open(map, marker); */
+				  $('#origin-input').val(results[0].formatted_address);
+				  /* google.maps.event.trigger(originAutocomplete, 'place_changed'); */
+				  
+				} else {
+				  window.alert('No results found');
+				}
+			  } else {
+				window.alert('Geocoder failed due to: ' + status);
+			  }
+			});
+			
+			
+		  }, function() {
+			handleLocationError(true, infoWindow, map.getCenter());
+		  });
+		} else {
+		  // Browser doesn't support Geolocation
+		  handleLocationError(false, infoWindow, map.getCenter());
+		}
+	}
+	
+
 }
 
 /* function searchLocationsNearPHP(center) {
@@ -154,7 +235,7 @@ function searchLocationsNear(center) {
 	clearLocations();
 	
 	var markerNodes = getFilteredBoutiques();
-	initAutocomplete(markerNodes);
+	initAddressAutocomplete(markerNodes);
 	var bounds = new google.maps.LatLngBounds();
 	
 	$('.boutiques-qty .qty').html(markerNodes.length);
@@ -163,7 +244,7 @@ function searchLocationsNear(center) {
 		var id = markerNodes[i].id;
 		var name = markerNodes[i].name;
 		var address = markerNodes[i].address;
-		var distance = parseFloat(markerNodes[i].distance);
+		/* var distance = parseFloat(markerNodes[i].distance); */
 		var latlng = new google.maps.LatLng(
 		parseFloat(markerNodes[i].lat),
 		parseFloat(markerNodes[i].lng));
@@ -172,7 +253,7 @@ function searchLocationsNear(center) {
 		
 		createBoutiqueListItem(markerNodes[i]);
 		
-		createMarker(latlng, name, address);
+		createMarker(latlng, markerNodes[i]);
 		bounds.extend(latlng);
 	}
 
@@ -191,25 +272,26 @@ function getData(){
 			{
 				id: 'IT',
 				name: 'Italy',
-				cities: ['Rome', 'Milan']
+				cities: ['Rome', 'Milan', 'Verona']
 			},
 			{
-				id: 'US',
-				name: 'USA',
-				cities: ['New York', 'Miami', 'Dallas']
+				id: 'AU',
+				name: 'Australia',
+				cities: ['Sydney']
 			},
 		],
 		boutiques: [
-			{id:1, country: 'US', city:'New York', type:'Etro boutique', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260,distance:52.762480400236754},
-			{id:2, country: 'US', city:'New York', type:'Etro boutique', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090,distance:51.30359905145628},
-			{id:3, country: 'US', city:'New York', type:'Etro outlet', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591,distance:65.60640686758967},
-			{id:4, country: 'US', city:'Miami', type:'Etro boutique', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609,distance:56.05760641917},
-			{id:5, country: 'US', city:'Miami', type:'Etro outlet', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706,distance:65.79696354609702},
-			{id:6, country: 'US', city:'Dallas', type:'Etro boutique', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707,distance:56.731386263386064},
-			{id:7, country: 'IT', city:'Rome', type:'Etro outlet', name:'Perfect Fit',address: "Darley Rd, Randwick NSW 2031",lat:-33.903557,lng: 151.237732,distance:63.92017421824136},
-			{id:8, country: 'IT', city:'Rome', type:'Etro boutique', name:'Buena Ropa!',address: "Brodie St, Rydalmere NSW 2116",lat:-33.815521,lng: 151.026642,distance:56.37149740204364},
-			{id:9, country: 'IT', city:'Milan', type:'Etro boutique', name:'Coxcomb and Lily Boutique',address: "Ferrers Rd, Horsley Park NSW 2175",lat:-33.829525,lng: 150.873764,distance:57.77872495434665},
-			{id:10, country: 'IT', city:'Milan', type:'Etro outlet', name:'Moda Couture',address: "Northcote Rd, Glebe NSW 2037",lat:-33.873882,lng: 151.177460,distance:61.243992108021324}
+			{id:1, country: 'AU', city:'Sydney', type:'Etro boutique', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260},
+			{id:2, country: 'AU', city:'Sydney', type:'Etro boutique', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090},
+			{id:3, country: 'AU', city:'Sydney', type:'Etro outlet', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591},
+			{id:4, country: 'AU', city:'Sydney', type:'Etro boutique', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609},
+			{id:5, country: 'AU', city:'Sydney', type:'Etro outlet', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706},
+			{id:6, country: 'AU', city:'Sydney', type:'Etro boutique', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707},
+			{id:7, country: 'IT', city:'Verona', type:'Etro boutique', name:'Etro Boutique',address: "Corso Porta Borsari 49",lat:45.4421667,lng: 10.9919822},
+			{id:8, country: 'IT', city:'Rome', type:'Etro boutique', name:'Etro Boutique',address: "Via del Babuino 102",lat:41.9066435,lng: 12.4783199},
+			{id:9, country: 'IT', city:'Rome', type:'Etro boutique', name:'Test store',address: "Rione III Colonna",lat:41.890251,lng: 12.492373},
+			{id:10, country: 'IT', city:'Milan', type:'Etro boutique', name:'Etro Boutique',address: "Via Monte Napoleone 5",lat:45.4676552,lng: 9.1932949},
+			{id:11, country: 'IT', city:'Milan', type:'Etro boutique', name:'Etro Boutique',address: "Aeroporto Malpensa 2000, T1",lat:45.6364481,lng: 8.7083114}
 		]
 	}
 }
@@ -220,7 +302,7 @@ function getFilteredBoutiques(){
 	var currentCountry 	= countrySelect.options[countrySelect.selectedIndex].value;
 	var currentCity 	= citySelect.options[citySelect.selectedIndex].value;
 	var selectedTypes   = [];
-            $.each($("input[name='type']:checked"), function(){            
+            $.each($(".filter-by-type input[name='type']:checked"), function(){            
                 selectedTypes.push($(this).val());
             });
 	
@@ -341,7 +423,7 @@ function fillTypeFilter(){
 	});
 }
 
-function initAutocomplete(filteredBoutiques){
+function initAddressAutocomplete(filteredBoutiques){
 	$( "#addressInput" ).autocomplete({
 		minLength: 0,
 		source: function( request, response ) {
@@ -369,17 +451,18 @@ function initAutocomplete(filteredBoutiques){
     };
 }
 
-function createMarker(latlng, name, address) {
-  var html = "<b>" + name + "</b> <br/>" + address;
-  var marker = new google.maps.Marker({
-	map: map,
-	position: latlng
-  });
-  google.maps.event.addListener(marker, 'click', function() {
-	infoWindow.setContent(html);
-	infoWindow.open(map, marker);
-  });
-  markers.push(marker);
+function createMarker(latlng, markerNode) {
+	var html = "<b>" + markerNode.name + "</b> <br/>" + markerNode.address;
+	var marker = new google.maps.Marker({
+		map: map,
+		position: latlng,
+		id: markerNode.id
+	});
+	google.maps.event.addListener(marker, 'click', function() {
+		infoWindow.setContent(html);
+		infoWindow.open(map, marker);
+	});
+	markers.push(marker);
 }
 
 /* function createOption(name, distance, num) {
@@ -396,8 +479,7 @@ function createBoutiqueListItem(markerNode){
 						'<div class="name">'+markerNode.name+'</div>'+
 						'<div class="address">'+markerNode.address+'</div>'+
 					'</a>';
-					
-					
+									
 	li.classList.add(markerNode.type.toLowerCase().replace(' ', '-'));				
 	li.dataset.id = markerNode.id;
 	boutiqueList.appendChild(li);
@@ -430,7 +512,95 @@ function parseXml(str) {
   }
 }
 
-
-	
-
 function doNothing() {}
+
+
+/**
+ * @constructor
+ */
+function AutocompleteDirectionsHandler(map) {
+	this.map = map;
+	this.originPlaceId = null;
+	this.destinationPlaceId = null;
+	this.travelMode = 'WALKING';
+	this.directionsService = new google.maps.DirectionsService;
+	this.directionsDisplay = new google.maps.DirectionsRenderer;
+	this.directionsDisplay.setMap(map);
+
+	var originInput = document.getElementById('origin-input');
+	var destinationInput = document.getElementById('destination-input');
+	var modeSelector = document.getElementById('mode-selector');
+
+	originAutocomplete = new google.maps.places.Autocomplete(originInput);
+	// Specify just the place data fields that you need.
+	originAutocomplete.setFields(['place_id']);
+
+	destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput);
+	// Specify just the place data fields that you need.
+	destinationAutocomplete.setFields(['place_id']);
+
+	this.setupClickListener('changemode-walking', 'WALKING');
+	this.setupClickListener('changemode-transit', 'TRANSIT');
+	this.setupClickListener('changemode-driving', 'DRIVING');
+
+	this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+	this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(
+	  destinationInput);
+	this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+}
+
+// Sets a listener on a radio button to change the filter type on Places
+// Autocomplete.
+AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+	var radioButton = document.getElementById(id);
+	var me = this;
+
+	radioButton.addEventListener('click', function() {
+		me.travelMode = mode;
+		me.route();
+	});
+};
+
+AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+  var me = this;
+  autocomplete.bindTo('bounds', this.map);
+
+  autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+
+    if (!place.place_id) {
+      window.alert('Please select an option from the dropdown list.');
+      return;
+    }
+    if (mode === 'ORIG') {
+      me.originPlaceId = place.place_id;
+    } else {
+      me.destinationPlaceId = place.place_id;
+    }
+    me.route();
+  });
+};
+
+AutocompleteDirectionsHandler.prototype.route = function() {
+  if (!this.originPlaceId || !this.destinationPlaceId) {
+    return;
+  }
+  var me = this;
+
+  this.directionsService.route(
+      {
+        origin: {'placeId': this.originPlaceId},
+        destination: {'placeId': this.destinationPlaceId},
+        travelMode: this.travelMode
+      },
+      function(response, status) {
+        if (status === 'OK') {
+          me.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+};
