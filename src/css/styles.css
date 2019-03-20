@@ -296,7 +296,41 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 194, ../scss/styles.scss */
+/* line 190, ../scss/styles.scss */
+.filters .filter-by-type .filter-by-type-popup ul li label {
+  cursor: pointer;
+}
+/* line 192, ../scss/styles.scss */
+.filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox] {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border: 1px solid #aaa;
+  overflow: hidden;
+  margin-top: 0px;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+}
+/* line 205, ../scss/styles.scss */
+.filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox]:checked:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-image: url(../icons/check-mark-3-24.png);
+  background-repeat: no-repeat;
+  background-position: 0 -3px;
+  background-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  line-height: 12px;
+  color: #f75e24;
+  margin-right: 8px;
+}
+/* line 227, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.close {
   position: absolute;
   top: 18px;
@@ -319,7 +353,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: contain;
   cursor: pointer;
 }
-/* line 210, ../scss/styles.scss */
+/* line 243, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.apply {
   width: 250px;
   height: 44px;
@@ -337,22 +371,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: 0.8;
 }
 
-/* line 224, ../scss/styles.scss */
+/* line 257, ../scss/styles.scss */
 .ui-autocomplete {
   background-color: #f5f5f5;
   max-width: 400px;
 }
-/* line 228, ../scss/styles.scss */
+/* line 261, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item {
   cursor: pointer;
 }
-/* line 231, ../scss/styles.scss */
+/* line 264, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item:hover {
   background-color: #eee;
   font-weight: 600;
 }
 
-/* line 238, ../scss/styles.scss */
+/* line 271, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;

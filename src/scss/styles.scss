@@ -187,6 +187,39 @@
 					@include font-open-sans($size:13px,$color:#000,$lh:1.2);
 					text-transform: uppercase;
 					padding-bottom: 20px;
+					label {
+						cursor: pointer;
+						input[type=checkbox] {
+							display: inline-block;
+							height: 12px;
+							width: 12px;
+							border: 1px solid #aaa;
+							overflow: hidden;
+							margin-top: 0px;
+							vertical-align: middle;
+							-webkit-appearance: none;
+							outline: 0;
+							background: transparent;
+							cursor: pointer;
+							&:checked {
+								&:before {
+									content: '';
+									display: block;
+									width: 12px;
+									height: 12px;
+									background-image: url(../icons/check-mark-3-24.png);
+									background-repeat: no-repeat;
+									background-position: 0 -3px;
+									background-size: 14px;
+									-webkit-font-smoothing: antialiased;
+									text-align: center;
+									line-height: 12px;
+									color: #f75e24;
+									margin-right: 8px;
+								}
+							}
+						}
+					}
 				}
 			}
 
