@@ -53,6 +53,12 @@ function initMap() {
 	$('body').on('click', '#boutique-list>li', function(){
 		var markerNum = $(this).data( "id" );;
 		if (markerNum != "none"){
+			
+			$('#boutique-list>li').each(function(){
+				$(this).removeClass('active');
+			});
+			
+			$(this).addClass('active');
 			google.maps.event.trigger(markers[markerNum], 'click');
 		}
 	});
@@ -96,12 +102,18 @@ function selectByAddress(){
 	
 	
 	var boutiquesByAddress = getFilteredBoutiques().filter(function(boutique){
-		return boutique.address.toLowerCase().indexOf(addressTerm.toLowerCase());
+		return boutique.address.toLowerCase().indexOf(addressTerm.toLowerCase())>=0;
 	});
 	
 	if(boutiquesByAddress.length){
 		var markerNum = boutiquesByAddress[0].id;
 		if (markerNum != "none"){
+			
+			$('#boutique-list>li').each(function(){
+				$(this).removeClass('active');
+			});
+			
+			$('#boutique-list>li[data-id="'+markerNum+'"]').addClass('active');
 			google.maps.event.trigger(markers[markerNum], 'click');
 		}
 	}
@@ -158,7 +170,7 @@ function searchLocationsNear(center) {
 
 		/* createOption(name, distance, i); */
 		
-		createBoutiqueListItem(name, address, i);
+		createBoutiqueListItem(markerNodes[i]);
 		
 		createMarker(latlng, name, address);
 		bounds.extend(latlng);
@@ -346,6 +358,7 @@ function initAutocomplete(filteredBoutiques){
 		},
 		select: function( event, ui ) {
 			$( "#addressInput" ).val( ui.item.address );
+			selectByAddress();
 			return false;
 		}
     })
@@ -376,15 +389,17 @@ function createMarker(latlng, name, address) {
   locationSelect.appendChild(option);
 } */
 
-function createBoutiqueListItem(name, address, id){
+function createBoutiqueListItem(markerNode){
 	
 	var li = document.createElement("li");
 	li.innerHTML = '<a href="#">'+
-						'<div class="name">'+name+'</div>'+
-						'<div class="address">'+address+'</div>'+
+						'<div class="name">'+markerNode.name+'</div>'+
+						'<div class="address">'+markerNode.address+'</div>'+
 					'</a>';
 					
-	li.dataset.id = id;
+					
+	li.classList.add(markerNode.type.toLowerCase().replace(' ', '-'));				
+	li.dataset.id = markerNode.id;
 	boutiqueList.appendChild(li);
 }
 	
