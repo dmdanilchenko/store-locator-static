@@ -483,6 +483,7 @@ function createMarker(latlng, markerNode) {
 	var marker = new google.maps.Marker({
 		map: map,
 		position: latlng,
+		icon: 'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'.png',
 		id: markerNode.id
 	});
 	google.maps.event.addListener(marker, 'click', function() {
