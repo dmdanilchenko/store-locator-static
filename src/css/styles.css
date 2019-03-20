@@ -411,7 +411,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 100vh;
 }
 
-/* line 295, ../scss/styles.scss */
+/* line 294, ../scss/styles.scss */
+#popup-content {
+  background: #ccc;
+  position: absolute;
+  bottom: 40px;
+  left: calc( 50% + 240px);
+  transform: translateX(-50%);
+  display: none;
+}
+/* line 302, ../scss/styles.scss */
+#popup-content.active {
+  display: block;
+}
+
+/* line 307, ../scss/styles.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -423,12 +437,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   visibility: hidden;
 }
-/* line 306, ../scss/styles.scss */
+/* line 318, ../scss/styles.scss */
 .controls.visible {
   visibility: visible;
 }
 
-/* line 311, ../scss/styles.scss */
+/* line 323, ../scss/styles.scss */
 #origin-input,
 #destination-input {
   background-color: #fff;
@@ -441,13 +455,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 200px;
 }
 
-/* line 323, ../scss/styles.scss */
+/* line 335, ../scss/styles.scss */
 #origin-input:focus,
 #destination-input:focus {
   border-color: #4d90fe;
 }
 
-/* line 328, ../scss/styles.scss */
+/* line 340, ../scss/styles.scss */
 #mode-selector {
   color: #fff;
   background-color: #4d90fe;
@@ -455,7 +469,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 5px 11px 0px 11px;
 }
 
-/* line 335, ../scss/styles.scss */
+/* line 347, ../scss/styles.scss */
 #mode-selector label {
   font-family: Roboto;
   font-size: 13px;

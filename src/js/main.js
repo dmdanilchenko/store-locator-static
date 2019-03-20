@@ -30,16 +30,15 @@ function initMap() {
 	countries = data.countries;
 	
 	
-	var sydney = {lat: -33.863276, lng: 151.107977};
+	/* var sydney = {lat: -33.863276, lng: 151.107977}; */
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: sydney,
+		/* center: sydney, */
 		zoom: 11,
 		mapTypeId: 'roadmap',
 		mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
 	});
 	infoWindow = new google.maps.InfoWindow();
-
-
+	
 	searchButton = document.getElementById("searchButton").onclick = selectByAddress;
 	navigatorButton = document.getElementById("navigatorButton").onclick = directionTo;
 	/* locationSelect = document.getElementById("locationSelect"); */
@@ -55,7 +54,7 @@ function initMap() {
 	}; */
 
 	$('body').on('click', '#boutique-list>li', function(){
-		var markerId = $(this).data( "id" );;
+		var markerId = $(this).data( "id" );
 		if (markerId != "none"){
 			
 			$('#boutique-list>li').each(function(){
@@ -63,6 +62,9 @@ function initMap() {
 			});
 			
 			$(this).addClass('active');
+			
+			fillPopup(markerId);
+
 			
 			var foundMarkers = markers.filter(function(marker){
 				return marker.id === markerId;
@@ -113,6 +115,7 @@ function clearLocations() {
 	/* locationSelect.appendChild(option); */
 	
 	boutiqueList.innerHTML = "";
+	$('#popup-content').removeClass('active');
 }
 
 function selectByAddress(){
@@ -132,6 +135,9 @@ function selectByAddress(){
 			});
 			
 			$('#boutique-list>li[data-id="'+markerId+'"]').addClass('active');
+			
+			fillPopup(markerId);
+			
 			var foundMarkers = markers.filter(function(marker){
 				return marker.id === markerId;
 			});
@@ -141,6 +147,22 @@ function selectByAddress(){
 			}
 		}
 	}
+}
+
+function fillPopup(id){
+	
+	var currentBoutique = data.boutiques.filter(function(boutique){
+		return boutique.id === id;
+	});
+	
+	if(currentBoutique.length){
+		$('#popup-content .name').html(currentBoutique[0].name);
+		$('#popup-content .address').html(currentBoutique[0].address);
+		$('#popup-content .contacts p').html(currentBoutique[0].contacts);
+		$('#popup-content .opening-time p').html(currentBoutique[0].openingTime);
+		$('#popup-content .available-collections p').html(currentBoutique[0].availableCollections);
+		$('#popup-content').addClass('active');
+	}	
 }
 
 function directionTo(){
@@ -281,17 +303,17 @@ function getData(){
 			},
 		],
 		boutiques: [
-			{id:1, country: 'AU', city:'Sydney', type:'Etro boutique', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086",lat:-33.737885,lng: 151.235260},
-			{id:2, country: 'AU', city:'Sydney', type:'Etro boutique', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",lat:-33.729752,lng: 150.836090},
-			{id:3, country: 'AU', city:'Sydney', type:'Etro outlet', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",lat:-33.949448,lng: 151.008591},
-			{id:4, country: 'AU', city:'Sydney', type:'Etro boutique', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",lat:-33.796669,lng: 151.183609},
-			{id:5, country: 'AU', city:'Sydney', type:'Etro outlet', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",lat:-33.944489,lng: 150.854706},
-			{id:6, country: 'AU', city:'Sydney', type:'Etro boutique', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",lat:-33.812222,lng: 151.143707},
-			{id:7, country: 'IT', city:'Verona', type:'Etro boutique', name:'Etro Boutique',address: "Corso Porta Borsari 49",lat:45.4421667,lng: 10.9919822},
-			{id:8, country: 'IT', city:'Rome', type:'Etro boutique', name:'Etro Boutique',address: "Via del Babuino 102",lat:41.9066435,lng: 12.4783199},
-			{id:9, country: 'IT', city:'Rome', type:'Etro boutique', name:'Test store',address: "Rione III Colonna",lat:41.890251,lng: 12.492373},
-			{id:10, country: 'IT', city:'Milan', type:'Etro boutique', name:'Etro Boutique',address: "Via Monte Napoleone 5",lat:45.4676552,lng: 9.1932949},
-			{id:11, country: 'IT', city:'Milan', type:'Etro boutique', name:'Etro Boutique',address: "Aeroporto Malpensa 2000, T1",lat:45.6364481,lng: 8.7083114}
+			{id:1, country: 'AU', city:'Sydney', type:'Etro boutique', name:'Heir Apparel',address: "Crowea Pl, Frenchs Forest NSW 2086", contacts: '+3 999 1234567',openingTime:'Lun-Dom 10:00 - 19:00',availableCollections:'Collezione Donna<br>Collezione Uomo<br>Accessori', lat:-33.737885,lng: 151.235260},
+			{id:2, country: 'AU', city:'Sydney', type:'Etro boutique', name:'BeeYourself Clothing',address: "Thalia St, Hassall Grove NSW 2761",contacts: '+3 999 1234567',openingTime:'Lun-Dom 10:00 - 18:00',availableCollections:'Collezione Donna<br>Collezione Uomo1<br>Accessori',lat:-33.729752,lng: 150.836090},
+			{id:3, country: 'AU', city:'Sydney', type:'Etro outlet', name:'Dress Code',address: "Glenview Avenue, Revesby, NSW 2212",contacts: '+3 099 1234567',openingTime:'Lun-Dom 10:00 - 17:00',availableCollections:'Collezione Donna<br>Collezione Uomo2<br>Accessori',lat:-33.949448,lng: 151.008591},
+			{id:4, country: 'AU', city:'Sydney', type:'Etro boutique', name:'The Legacy',address: "Charlotte Ln, Chatswood NSW 2067",contacts: '+3 222 1233321',openingTime:'Lun-Dom 10:00 - 16:00',availableCollections:'Collezione Donna<br>Collezione Uomo3<br>Accessori',lat:-33.796669,lng: 151.183609},
+			{id:5, country: 'AU', city:'Sydney', type:'Etro outlet', name:'Fashiontasia',address: "Braidwood Dr, Prestons NSW 2170",contacts: '+3 999 999999',openingTime:'Lun-Dom 10:00 - 15:00',availableCollections:'Collezione Donna<br>Collezione Uomo4<br>Accessori',lat:-33.944489,lng: 150.854706},
+			{id:6, country: 'AU', city:'Sydney', type:'Etro boutique', name:'Trish & Tash',address: "Lincoln St, Lane Cove West NSW 2066",contacts: '+3 888 8888888',openingTime:'Lun-Dom 11:00 - 19:00',availableCollections:'Collezione Donna<br>Collezione Uomo5<br>Accessori',lat:-33.812222,lng: 151.143707},
+			{id:7, country: 'IT', city:'Verona', type:'Etro boutique', name:'Etro Boutique',address: "Corso Porta Borsari 49",contacts: '+3 778 77777777',openingTime:'Lun-Dom 12:00 - 19:00',availableCollections:'Collezione Donna<br>Collezione Uomo6<br>Accessori',lat:45.4421667,lng: 10.9919822},
+			{id:8, country: 'IT', city:'Rome', type:'Etro boutique', name:'Etro Boutique',address: "Via del Babuino 102",contacts: '+2 234 23423423',openingTime:'Lun-Dom 13:00 - 19:00',availableCollections:'Collezione Donna<br>Collezione Uomo7<br>Accessori',lat:41.9066435,lng: 12.4783199},
+			{id:9, country: 'IT', city:'Rome', type:'Etro boutique', name:'Test store',address: "Rione III Colonna",contacts: '+1 111 4567890',openingTime:'Lun-Dom 14:00 - 19:00',availableCollections:'Collezione Donna<br>Collezione Uomo8<br>Accessori',lat:41.890251,lng: 12.492373},
+			{id:10, country: 'IT', city:'Milan', type:'Etro boutique', name:'Etro Boutique',address: "Via Monte Napoleone 5",contacts: '+9 234 2342344',openingTime:'Lun-Dom 8:00 - 22:00',availableCollections:'Collezione Donna<br>Collezione Uomo12<br>Accessori',lat:45.4676552,lng: 9.1932949},
+			{id:11, country: 'IT', city:'Milan', type:'Etro boutique', name:'Etro Boutique',address: "Aeroporto Malpensa 2000, T1",contacts: '+8 666 4444444',openingTime:'Lun-Dom 9:00 - 23:00',availableCollections:'Collezione Donna<br>Collezione Uomo15<br>Accessori',lat:45.6364481,lng: 8.7083114}
 		]
 	}
 }
@@ -412,6 +434,8 @@ function fillTypeFilter(){
 
 	$('.filter-by-type .apply').on('click', function(){
 		searchLocations();
+		$('.filter-by-type-popup').removeClass('active');
+		$('.search-result-box').removeClass('overlay');
 	});
 	
 	$('.filter-by-type .open').on('click', function(){

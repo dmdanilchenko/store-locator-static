@@ -291,6 +291,18 @@
 	height: 100vh;
 }
 
+#popup-content{
+    background: #ccc;
+    position: absolute;
+    bottom: 40px;
+    left: calc( 50% + 240px);
+	transform: translateX(-50%);
+	display: none;
+	
+	&.active{
+		display: block;
+	}
+}
 
 .controls {
 	margin-top: 10px;
