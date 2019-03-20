@@ -52,6 +52,7 @@
 		.select-wrapp {
 			select {
 				width: 100%;
+				margin-left: 1px;
 				cursor: pointer;
 				background: url(../icons/icon-arrow-down.png) no-repeat right;
 				-webkit-appearance: none;
@@ -307,11 +308,17 @@
 	
 .ui-autocomplete{
 	background-color: #f5f5f5;
-	max-width: 400px;
+	padding: 0 0 0 10px;
+	max-width: 300px;
+
+	//display: block !important;
 	
 	.ui-menu-item{
 		cursor: pointer;
-		
+		border-bottom: 1px solid #fff;
+		padding-bottom: 5px;
+		@include font-open-sans();
+
 		&:hover{
 			background-color: #eee;
 			font-weight: 600;

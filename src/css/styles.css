@@ -123,27 +123,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 53, ../scss/styles.scss */
 .filters .search-params-box .select-wrapp select {
   width: 100%;
+  margin-left: 1px;
   cursor: pointer;
   background: url(../icons/icon-arrow-down.png) no-repeat right;
   -webkit-appearance: none;
   background-position-x: 360px;
   background-size: 15px;
 }
-/* line 62, ../scss/styles.scss */
+/* line 63, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper {
   display: flex;
   flex-direction: row;
 }
-/* line 65, ../scss/styles.scss */
+/* line 66, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text] {
   flex-grow: 2;
   border: none;
 }
-/* line 68, ../scss/styles.scss */
+/* line 69, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text]:focus {
   outline: none;
 }
-/* line 72, ../scss/styles.scss */
+/* line 73, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button] {
   border-top: none;
   border-bottom: none;
@@ -152,7 +153,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: transparent;
   cursor: pointer;
 }
-/* line 80, ../scss/styles.scss */
+/* line 81, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#searchButton {
   background-image: url(../icons/search-icon.svg);
   background-position: 7px 9px;
@@ -160,7 +161,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: 25px;
   width: 40px;
 }
-/* line 87, ../scss/styles.scss */
+/* line 88, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#navigatorButton {
   background-image: url(../icons/nav-arrrow.png);
   background-position: 8px 11px;
@@ -168,13 +169,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: 24px;
   width: 40px;
 }
-/* line 96, ../scss/styles.scss */
+/* line 97, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
 }
-/* line 100, ../scss/styles.scss */
+/* line 101, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .boutique-count-wrapper {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -184,12 +185,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   line-height: 1.42;
   letter-spacing: normal;
 }
-/* line 102, ../scss/styles.scss */
+/* line 103, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .boutique-count-wrapper .label {
   font-size: 18px;
   text-transform: uppercase;
 }
-/* line 107, ../scss/styles.scss */
+/* line 108, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .filters-link {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -209,7 +210,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   					display: inline-block;
   				}*/
 }
-/* line 118, ../scss/styles.scss */
+/* line 119, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .filters-link .plus-icn {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -223,22 +224,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: -4px;
   left: -17px;
 }
-/* line 124, ../scss/styles.scss */
+/* line 125, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .filters-link .label {
   text-decoration: underline;
 }
-/* line 130, ../scss/styles.scss */
+/* line 131, ../scss/styles.scss */
 .filters .search-result-box {
   position: relative;
   overflow-y: scroll;
   height: 100%;
   max-height: calc(100% - 277px);
 }
-/* line 136, ../scss/styles.scss */
+/* line 137, ../scss/styles.scss */
 .filters .search-result-box.overlay {
   overflow: hidden;
 }
-/* line 138, ../scss/styles.scss */
+/* line 139, ../scss/styles.scss */
 .filters .search-result-box.overlay:after {
   content: '\A';
   position: absolute;
@@ -250,7 +251,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(0, 0, 0, 0.6);
   opacity: 1;
 }
-/* line 151, ../scss/styles.scss */
+/* line 152, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li {
   position: relative;
   height: 69px;
@@ -258,32 +259,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding-top: 17px;
   padding-bottom: 13px;
 }
-/* line 157, ../scss/styles.scss */
+/* line 158, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li:after {
   content: '';
   background: #dddddd;
   width: 100%;
   height: 1px;
 }
-/* line 164, ../scss/styles.scss */
+/* line 165, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active {
   background-color: #eee;
 }
-/* line 166, ../scss/styles.scss */
+/* line 167, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active.etro-boutique {
   background: url(../icons/etro-boutique-icon.png) no-repeat right;
   background-size: 25px;
   background-position-x: 27px;
   background-position-y: 21px;
 }
-/* line 172, ../scss/styles.scss */
+/* line 173, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active.etro-outlet {
   background: url(../icons/etro-outlet-icon.png) no-repeat right;
   background-size: 25px;
   background-position-x: 27px;
   background-position-y: 21px;
 }
-/* line 180, ../scss/styles.scss */
+/* line 181, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -295,7 +296,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: normal;
   text-decoration: none;
 }
-/* line 183, ../scss/styles.scss */
+/* line 184, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a:after {
   content: '';
   position: absolute;
@@ -309,32 +310,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 15px;
   height: 15px;
 }
-/* line 196, ../scss/styles.scss */
+/* line 197, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div {
   padding: 0 30px 0 59px;
 }
-/* line 198, ../scss/styles.scss */
+/* line 199, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div.name {
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 202, ../scss/styles.scss */
+/* line 203, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div.address {
   font-size: 13px;
 }
-/* line 212, ../scss/styles.scss */
+/* line 213, ../scss/styles.scss */
 .filters .filter-by-type.popup-wrapper {
   position: sticky;
   top: 0;
   right: 0;
   z-index: 9;
 }
-/* line 219, ../scss/styles.scss */
+/* line 220, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup {
   display: none;
   position: relative;
 }
-/* line 223, ../scss/styles.scss */
+/* line 224, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup.active {
   display: block;
   position: absolute;
@@ -346,7 +347,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 18px 27px;
   margin: 0 0 0 auto;
 }
-/* line 236, ../scss/styles.scss */
+/* line 237, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -359,11 +360,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 240, ../scss/styles.scss */
+/* line 241, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label {
   cursor: pointer;
 }
-/* line 242, ../scss/styles.scss */
+/* line 243, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox] {
   display: inline-block;
   height: 12px;
@@ -377,7 +378,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: transparent;
   cursor: pointer;
 }
-/* line 255, ../scss/styles.scss */
+/* line 256, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox]:checked:before {
   content: '';
   display: block;
@@ -393,7 +394,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #f75e24;
   margin-right: 8px;
 }
-/* line 277, ../scss/styles.scss */
+/* line 278, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.close {
   position: absolute;
   top: 15px;
@@ -416,7 +417,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: contain;
   cursor: pointer;
 }
-/* line 293, ../scss/styles.scss */
+/* line 294, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.apply {
   width: 250px;
   height: 44px;
@@ -434,29 +435,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: 0.8;
 }
 
-/* line 308, ../scss/styles.scss */
+/* line 309, ../scss/styles.scss */
 .ui-autocomplete {
   background-color: #f5f5f5;
-  max-width: 400px;
+  padding: 0 0 0 10px;
+  max-width: 300px;
 }
-/* line 312, ../scss/styles.scss */
+/* line 316, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item {
   cursor: pointer;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: normal;
 }
-/* line 315, ../scss/styles.scss */
+/* line 322, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item:hover {
   background-color: #eee;
   font-weight: 600;
 }
 
-/* line 322, ../scss/styles.scss */
+/* line 329, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;
   height: 100vh;
 }
 
-/* line 329, ../scss/styles.scss */
+/* line 336, ../scss/styles.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -468,12 +479,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   visibility: hidden;
 }
-/* line 340, ../scss/styles.scss */
+/* line 347, ../scss/styles.scss */
 .controls.visible {
   visibility: visible;
 }
 
-/* line 345, ../scss/styles.scss */
+/* line 352, ../scss/styles.scss */
 #origin-input,
 #destination-input {
   margin-left: 12px;
@@ -510,13 +521,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #000;
 }
 
-/* line 358, ../scss/styles.scss */
+/* line 365, ../scss/styles.scss */
 #origin-input:focus,
 #destination-input:focus {
   border-color: #000;
 }
 
-/* line 363, ../scss/styles.scss */
+/* line 370, ../scss/styles.scss */
 #mode-selector {
   color: #000;
   background-color: #f5f5f5;
@@ -524,7 +535,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 5px 11px 0px 11px;
 }
 
-/* line 370, ../scss/styles.scss */
+/* line 377, ../scss/styles.scss */
 #mode-selector label {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
