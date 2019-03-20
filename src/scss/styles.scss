@@ -83,9 +83,22 @@
 			display: block;
 		}
 	}
-		
 }
-
+	
+.ui-autocomplete{
+	background-color: #f5f5f5;
+	max-width: 400px;
+	
+	.ui-menu-item{
+		cursor: pointer;
+		
+		&:hover{
+			background-color: #eee;
+			font-weight: 600;
+		}
+	}
+}
+	
 #map{
 	width: calc( 100% - 540px );
 	margin: 0 0 0 480px;

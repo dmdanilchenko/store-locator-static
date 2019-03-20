@@ -36,7 +36,7 @@ function initMap() {
 	});
 	infoWindow = new google.maps.InfoWindow();
 
-	searchButton = document.getElementById("searchButton").onclick = searchLocations;
+	searchButton = document.getElementById("searchButton").onclick = selectByAddress;
 
 	/* locationSelect = document.getElementById("locationSelect"); */
 	countrySelect 	= document.getElementById("country-select");
@@ -59,7 +59,7 @@ function initMap() {
 	
 	fillCountries();
 	fillTypeFilter();
-
+	initAutocomplete();
 }
 
 function searchLocations() {
@@ -89,6 +89,22 @@ function clearLocations() {
 	/* locationSelect.appendChild(option); */
 	
 	boutiqueList.innerHTML = "";
+}
+
+function selectByAddress(){
+	var addressTerm = $('#addressInput').val();
+	
+	
+	var boutiquesByAddress = getFilteredBoutiques().filter(function(boutique){
+		return boutique.address.toLowerCase().indexOf(addressTerm.toLowerCase());
+	});
+	
+	if(boutiquesByAddress.length){
+		var markerNum = boutiquesByAddress[0].id;
+		if (markerNum != "none"){
+			google.maps.event.trigger(markers[markerNum], 'click');
+		}
+	}
 }
 
 /* function searchLocationsNearPHP(center) {
@@ -126,6 +142,7 @@ function searchLocationsNear(center) {
 	clearLocations();
 	
 	var markerNodes = getFilteredBoutiques();
+	initAutocomplete(markerNodes);
 	var bounds = new google.maps.LatLngBounds();
 	
 	$('.boutiques-qty .qty').html(markerNodes.length);
@@ -195,6 +212,7 @@ function getFilteredBoutiques(){
                 selectedTypes.push($(this).val());
             });
 	
+
 	if(selectedTypes.length){
 		
 		if(currentCountry === 'all'&&currentCity === 'all'){
@@ -309,6 +327,33 @@ function fillTypeFilter(){
 	$('.filter-by-type .close').on('click', function(){
 		$('.filter-by-type-popup').removeClass('active');
 	});
+}
+
+function initAutocomplete(filteredBoutiques){
+	$( "#addressInput" ).autocomplete({
+		minLength: 0,
+		source: function( request, response ) {
+		  // extract the last term
+		  var lastTerm = request.term.toLowerCase();
+		  var results = [];
+		  // loop over data, seeking labels & desc
+		  $.each(filteredBoutiques, function(k, v){
+			if(v.address.toLowerCase().indexOf(lastTerm) >= 0){
+			  results.push(v);
+			}
+		  });
+		  response(results);
+		},
+		select: function( event, ui ) {
+			$( "#addressInput" ).val( ui.item.address );
+			return false;
+		}
+    })
+    .autocomplete( "instance" )._renderItem = function( ul, item ) {
+		return $( "<li>" )
+			.append( "<div>" + item.name + "<br>" + item.address + "</div>" )
+			.appendTo( ul );
+    };
 }
 
 function createMarker(latlng, name, address) {

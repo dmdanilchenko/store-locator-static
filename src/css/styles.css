@@ -158,7 +158,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 89, ../scss/styles.scss */
+/* line 88, ../scss/styles.scss */
+.ui-autocomplete {
+  background-color: #f5f5f5;
+  max-width: 400px;
+}
+/* line 92, ../scss/styles.scss */
+.ui-autocomplete .ui-menu-item {
+  cursor: pointer;
+}
+/* line 95, ../scss/styles.scss */
+.ui-autocomplete .ui-menu-item:hover {
+  background-color: #eee;
+  font-weight: 600;
+}
+
+/* line 102, ../scss/styles.scss */
 #map {
   width: calc( 100% - 540px );
   margin: 0 0 0 480px;
