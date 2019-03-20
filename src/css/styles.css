@@ -3,7 +3,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
-/* line 5, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,45 +25,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -123,27 +123,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 53, ../scss/styles.scss */
 .filters .search-params-box .select-wrapp select {
   width: 100%;
+  margin-left: 1px;
   cursor: pointer;
   background: url(../icons/icon-arrow-down.png) no-repeat right;
   -webkit-appearance: none;
   background-position-x: 360px;
   background-size: 15px;
 }
-/* line 62, ../scss/styles.scss */
+/* line 63, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper {
   display: flex;
   flex-direction: row;
 }
-/* line 65, ../scss/styles.scss */
+/* line 66, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text] {
   flex-grow: 2;
   border: none;
 }
-/* line 68, ../scss/styles.scss */
+/* line 69, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text]:focus {
   outline: none;
 }
-/* line 72, ../scss/styles.scss */
+/* line 73, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button] {
   border-top: none;
   border-bottom: none;
@@ -152,7 +153,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: transparent;
   cursor: pointer;
 }
-/* line 80, ../scss/styles.scss */
+/* line 81, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#searchButton {
   background-image: url(../icons/search-icon.svg);
   background-position: 7px 9px;
@@ -160,7 +161,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: 25px;
   width: 40px;
 }
-/* line 87, ../scss/styles.scss */
+/* line 88, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#navigatorButton {
   background-image: url(../icons/nav-arrrow.png);
   background-position: 8px 11px;
@@ -168,13 +169,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: 24px;
   width: 40px;
 }
-/* line 96, ../scss/styles.scss */
+/* line 97, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
 }
-/* line 100, ../scss/styles.scss */
+/* line 101, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .boutique-count-wrapper {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -184,12 +185,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   line-height: 1.42;
   letter-spacing: normal;
 }
-/* line 102, ../scss/styles.scss */
+/* line 103, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .boutique-count-wrapper .label {
   font-size: 18px;
   text-transform: uppercase;
 }
-/* line 107, ../scss/styles.scss */
+/* line 108, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .filters-link {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -199,7 +200,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-weight: normal;
   line-height: 2.08;
   letter-spacing: normal;
+  position: relative;
   text-transform: uppercase;
+  text-decoration: none;
   /*				&:before {
   					content: '+';
   					@include font-open-sans($color:#777573,$size:19px);
@@ -207,7 +210,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   					display: inline-block;
   				}*/
 }
-/* line 116, ../scss/styles.scss */
+/* line 119, ../scss/styles.scss */
 .filters .search-params-box .params-box-bottom-part .filters-link .plus-icn {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -217,49 +220,71 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-weight: normal;
   line-height: normal;
   letter-spacing: normal;
-  margin-right: 5px;
+  position: absolute;
+  top: -4px;
+  left: -17px;
 }
-/* line 123, ../scss/styles.scss */
+/* line 125, ../scss/styles.scss */
+.filters .search-params-box .params-box-bottom-part .filters-link .label {
+  text-decoration: underline;
+}
+/* line 131, ../scss/styles.scss */
 .filters .search-result-box {
   position: relative;
-  padding: 20px 30px 20px 59px;
   overflow-y: scroll;
   height: 100%;
-  max-height: calc(100% - 315px);
+  max-height: calc(100% - 277px);
 }
-/* line 129, ../scss/styles.scss */
+/* line 137, ../scss/styles.scss */
 .filters .search-result-box.overlay {
   overflow: hidden;
 }
-/* line 131, ../scss/styles.scss */
+/* line 139, ../scss/styles.scss */
 .filters .search-result-box.overlay:after {
   content: '\A';
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 9999px;
+  max-height: unset;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.6);
   opacity: 1;
-  transition: all 1s;
-  -webkit-transition: all 1s;
 }
-/* line 145, ../scss/styles.scss */
+/* line 152, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li {
-  height: 100px;
+  position: relative;
+  height: 69px;
+  border-bottom: 1px solid #dddddd;
+  padding-top: 17px;
+  padding-bottom: 13px;
 }
-/* line 147, ../scss/styles.scss */
+/* line 158, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li:after {
   content: '';
   background: #dddddd;
   width: 100%;
   height: 1px;
 }
-/* line 154, ../scss/styles.scss */
+/* line 165, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active {
   background-color: #eee;
 }
-/* line 164, ../scss/styles.scss */
+/* line 167, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li.active.etro-boutique {
+  background: url(../icons/etro-boutique-icon.png) no-repeat right;
+  background-size: 25px;
+  background-position-x: 27px;
+  background-position-y: 21px;
+}
+/* line 173, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li.active.etro-outlet {
+  background: url(../icons/etro-outlet-icon.png) no-repeat right;
+  background-size: 25px;
+  background-position-x: 27px;
+  background-position-y: 21px;
+}
+/* line 181, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -271,37 +296,58 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: normal;
   text-decoration: none;
 }
-/* line 167, ../scss/styles.scss */
-.filters .search-result-box ul#boutique-list > li a .name {
-  text-transform: uppercase;
+/* line 184, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a:after {
+  content: '';
+  position: absolute;
+  top: 41px;
+  display: block;
+  right: 25px;
+  transform: rotate(-90deg);
+  background: url(../icons/icon-arrow-down.png) no-repeat right;
+  -webkit-appearance: none;
+  background-size: 15px;
+  width: 15px;
+  height: 15px;
 }
-/* line 170, ../scss/styles.scss */
-.filters .search-result-box ul#boutique-list > li a .address {
+/* line 197, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a div {
+  padding: 0 30px 0 59px;
+}
+/* line 199, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a div.name {
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+/* line 203, ../scss/styles.scss */
+.filters .search-result-box ul#boutique-list > li a div.address {
   font-size: 13px;
 }
-/* line 179, ../scss/styles.scss */
+/* line 213, ../scss/styles.scss */
 .filters .filter-by-type.popup-wrapper {
-  position: absolute;
+  position: sticky;
   top: 0;
   right: 0;
   z-index: 9;
 }
-/* line 186, ../scss/styles.scss */
+/* line 220, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup {
   display: none;
   position: relative;
 }
-/* line 190, ../scss/styles.scss */
+/* line 224, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup.active {
   display: block;
+  position: absolute;
+  right: 0;
   width: 250px;
-  height: 149px;
+  height: 117px;
   border: solid 1px #dddddd;
   background-color: #f5f5f5;
   padding: 18px 27px;
   margin: 0 0 0 auto;
 }
-/* line 202, ../scss/styles.scss */
+/* line 237, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -314,11 +360,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 206, ../scss/styles.scss */
+/* line 241, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label {
   cursor: pointer;
 }
-/* line 208, ../scss/styles.scss */
+/* line 243, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox] {
   display: inline-block;
   height: 12px;
@@ -332,7 +378,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: transparent;
   cursor: pointer;
 }
-/* line 221, ../scss/styles.scss */
+/* line 256, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox]:checked:before {
   content: '';
   display: block;
@@ -348,10 +394,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   color: #f75e24;
   margin-right: 8px;
 }
-/* line 243, ../scss/styles.scss */
+/* line 278, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.close {
   position: absolute;
-  top: 18px;
+  top: 15px;
   right: 27px;
   width: 20px;
   height: 20px;
@@ -371,7 +417,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background-size: contain;
   cursor: pointer;
 }
-/* line 259, ../scss/styles.scss */
+/* line 294, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.apply {
   width: 250px;
   height: 44px;
@@ -389,28 +435,39 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   letter-spacing: 0.8;
 }
 
-/* line 274, ../scss/styles.scss */
+/* line 309, ../scss/styles.scss */
 .ui-autocomplete {
   background-color: #f5f5f5;
-  max-width: 400px;
+  padding: 0 0 0 10px;
+  max-width: 300px;
 }
-/* line 278, ../scss/styles.scss */
+/* line 316, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item {
   cursor: pointer;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: normal;
 }
-/* line 281, ../scss/styles.scss */
+/* line 322, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item:hover {
   background-color: #eee;
   font-weight: 600;
 }
 
-/* line 288, ../scss/styles.scss */
+/* line 329, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;
   height: 100vh;
 }
 
+<<<<<<< HEAD
 /* line 294, ../scss/styles.scss */
 #popup-content {
   background: #ccc;
@@ -426,6 +483,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 307, ../scss/styles.scss */
+=======
+/* line 336, ../scss/styles.scss */
+>>>>>>> 7e6f34d047ec2e816f16027d5522ab631b6c8cb2
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -437,43 +497,91 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   visibility: hidden;
 }
+<<<<<<< HEAD
 /* line 318, ../scss/styles.scss */
+=======
+/* line 347, ../scss/styles.scss */
+>>>>>>> 7e6f34d047ec2e816f16027d5522ab631b6c8cb2
 .controls.visible {
   visibility: visible;
 }
 
+<<<<<<< HEAD
 /* line 323, ../scss/styles.scss */
+=======
+/* line 352, ../scss/styles.scss */
+>>>>>>> 7e6f34d047ec2e816f16027d5522ab631b6c8cb2
 #origin-input,
 #destination-input {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
-  font-weight: 300;
   margin-left: 12px;
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 200px;
+  background-color: #f5f5f5;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: normal;
+}
+/* line 10, ../scss/styles.scss */
+#origin-input::-webkit-input-placeholder,
+#destination-input::-webkit-input-placeholder {
+  color: #000;
+}
+/* line 11, ../scss/styles.scss */
+#origin-input:-moz-placeholder,
+#destination-input:-moz-placeholder {
+  color: #000;
+}
+/* line 12, ../scss/styles.scss */
+#origin-input::-moz-placeholder,
+#destination-input::-moz-placeholder {
+  color: #000;
+}
+/* line 13, ../scss/styles.scss */
+#origin-input:-ms-input-placeholder,
+#destination-input:-ms-input-placeholder {
+  color: #000;
 }
 
+<<<<<<< HEAD
 /* line 335, ../scss/styles.scss */
+=======
+/* line 365, ../scss/styles.scss */
+>>>>>>> 7e6f34d047ec2e816f16027d5522ab631b6c8cb2
 #origin-input:focus,
 #destination-input:focus {
-  border-color: #4d90fe;
+  border-color: #000;
 }
 
+<<<<<<< HEAD
 /* line 340, ../scss/styles.scss */
+=======
+/* line 370, ../scss/styles.scss */
+>>>>>>> 7e6f34d047ec2e816f16027d5522ab631b6c8cb2
 #mode-selector {
-  color: #fff;
-  background-color: #4d90fe;
+  color: #000;
+  background-color: #f5f5f5;
   margin-left: 12px;
   padding: 5px 11px 0px 11px;
 }
 
+<<<<<<< HEAD
 /* line 347, ../scss/styles.scss */
+=======
+/* line 377, ../scss/styles.scss */
+>>>>>>> 7e6f34d047ec2e816f16027d5522ab631b6c8cb2
 #mode-selector label {
-  font-family: Roboto;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-stretch: normal;
   font-size: 13px;
   font-weight: 300;
+  line-height: normal;
+  letter-spacing: normal;
 }
 
 /*# sourceMappingURL=styles.css.map */
