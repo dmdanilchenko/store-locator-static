@@ -124,7 +124,23 @@
 		position: relative;
 		padding: 20px 30px 20px 59px;
 		overflow-y: scroll;
+		height: 100%;
 		max-height: calc(100% - 315px);
+		&.overlay {
+			overflow: hidden;
+			&:after {
+				content: '\A';
+				position: absolute;
+				width: 100%;
+				height:100%;
+				top:0;
+				left:0;
+				background:rgba(0,0,0,0.6);
+				opacity: 1;
+				transition: all 1s;
+				-webkit-transition: all 1s;
+			}
+		}
 		ul#boutique-list {
 			> li {
 				height: 100px;

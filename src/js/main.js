@@ -334,11 +334,13 @@ function fillTypeFilter(){
 	
 	$('.filter-by-type .open').on('click', function(){
 		$('.filter-by-type-popup').addClass('active');
+		$('.search-result-box').addClass('overlay');
 
 	});
 	
 	$('.filter-by-type .close').on('click', function(){
 		$('.filter-by-type-popup').removeClass('active');
+		$('.search-result-box').removeClass('overlay');
 	});
 }
 
