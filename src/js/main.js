@@ -334,6 +334,7 @@ function fillTypeFilter(){
 	
 	$('.filter-by-type .open').on('click', function(){
 		$('.filter-by-type-popup').addClass('active');
+
 	});
 	
 	$('.filter-by-type .close').on('click', function(){
