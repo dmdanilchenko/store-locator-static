@@ -58,7 +58,7 @@ function initMap() {
 	});
 	
 	fillCountries();
-
+	fillTypeFilter();
 
 }
 
@@ -190,19 +190,42 @@ function getFilteredBoutiques(){
 	var filteredBoutiques = [];
 	var currentCountry 	= countrySelect.options[countrySelect.selectedIndex].value;
 	var currentCity 	= citySelect.options[citySelect.selectedIndex].value;
+	var selectedTypes   = [];
+            $.each($("input[name='type']:checked"), function(){            
+                selectedTypes.push($(this).val());
+            });
 	
-	if(currentCountry === 'all'&&currentCity === 'all'){
-		filteredBoutiques = data.boutiques.filter(function(boutique){
-			return true;
-		});
-	}else if(currentCity === 'all'){
-		filteredBoutiques = data.boutiques.filter(function(boutique){
-			return boutique.country === currentCountry;
-		});
+	if(selectedTypes.length){
+		
+		if(currentCountry === 'all'&&currentCity === 'all'){
+			filteredBoutiques = data.boutiques.filter(function(boutique){
+				return selectedTypes.indexOf(boutique.type)>=0;
+			});
+		}else if(currentCity === 'all'){
+			filteredBoutiques = data.boutiques.filter(function(boutique){
+				return boutique.country === currentCountry && selectedTypes.indexOf(boutique.type)>=0;
+			});
+		}else{	
+			filteredBoutiques = data.boutiques.filter(function(boutique){
+				return boutique.country === currentCountry && boutique.city === currentCity && selectedTypes.indexOf(boutique.type)>=0;
+			});
+		}
+		
 	}else{	
-		filteredBoutiques = data.boutiques.filter(function(boutique){
-			return boutique.country === currentCountry&&boutique.city === currentCity;
-		});
+	
+		if(currentCountry === 'all'&&currentCity === 'all'){
+			filteredBoutiques = data.boutiques.filter(function(boutique){
+				return true;
+			});
+		}else if(currentCity === 'all'){
+			filteredBoutiques = data.boutiques.filter(function(boutique){
+				return boutique.country === currentCountry;
+			});
+		}else{	
+			filteredBoutiques = data.boutiques.filter(function(boutique){
+				return boutique.country === currentCountry&&boutique.city === currentCity;
+			});
+		}
 	}
 	
 	return filteredBoutiques;
@@ -258,6 +281,33 @@ function fillCities(countryId){
 	
 	$('#city-select').on('change', function(){
 		searchLocations();
+	});
+}
+
+function fillTypeFilter(){
+	
+	var types = [];
+	for(var i=0; i<data.boutiques.length; i++){
+		types.push(data.boutiques[i].type);
+	}
+	var uniqueTypes = types.filter(function(item, j, ar){ return ar.indexOf(item) === j; });
+	
+	for(var k=0; k<uniqueTypes.length; k++){
+		var li = document.createElement("li");
+		li.innerHTML = '<label><input type="checkbox" name="type" value="'+uniqueTypes[k]+'">'+uniqueTypes[k]+'</label>';
+		$('.filter-by-type ul').append(li);
+	}
+
+	$('.filter-by-type .apply').on('click', function(){
+		searchLocations();
+	});
+	
+	$('.filter-by-type .open').on('click', function(){
+		$('.filter-by-type-popup').addClass('active');
+	});
+	
+	$('.filter-by-type .close').on('click', function(){
+		$('.filter-by-type-popup').removeClass('active');
 	});
 }
 

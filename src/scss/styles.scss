@@ -75,6 +75,15 @@
 	.search-result-box {
 		padding: 20px 30px 20px 59px;
 	}
+	
+	.filter-by-type-popup{
+		display: none;
+		
+		&.active{
+			display: block;
+		}
+	}
+		
 }
 
 #map{
