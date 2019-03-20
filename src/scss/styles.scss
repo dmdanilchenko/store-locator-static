@@ -164,10 +164,16 @@
 				&.active{
 					background-color:#eee;
 					&.etro-boutique{
-						
+						background: url(../icons/etro-boutique-icon.png) no-repeat right;
+						background-size: 25px;
+						background-position-x: 27px;
+						background-position-y: 21px;
 					}
 					&.etro-outlet{
-						
+						background: url(../icons/etro-outlet-icon.png) no-repeat right;
+						background-size: 25px;
+						background-position-x: 27px;
+						background-position-y: 21px;
 					}
 				}
 				
