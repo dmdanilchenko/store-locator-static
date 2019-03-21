@@ -429,7 +429,7 @@ function createMarker(latlng, markerNode) {
 	var marker = new google.maps.Marker({
 		map: map,
 		position: latlng,
-		icon: 'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'.png',
+		icon: {url:'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'.png', scaledSize: new google.maps.Size(26, 40)},
 		type: markerNode.type.toLowerCase().replace(' ', '-'),
 		id: markerNode.id
 	});
@@ -441,7 +441,7 @@ function createMarker(latlng, markerNode) {
 			markers[i].setIcon('src/icons/marker-'+markers[i].type+'.png'); 
 		}
 		
-		marker.setIcon('src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'-active.png'); 
+		marker.setIcon({url:'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'-active.png', scaledSize: new google.maps.Size(32, 50)}); 
 		
 		var markerId = markerNode.id;
 		if (markerId != "none"){
