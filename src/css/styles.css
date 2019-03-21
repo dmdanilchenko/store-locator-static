@@ -553,7 +553,16 @@ body {
   padding: 0 0 0 10px;
   max-width: 300px;
 }
-/* line 410, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 405, ../scss/styles.scss */
+  .ui-autocomplete {
+    max-width: unset;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+}
+/* line 417, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item {
   cursor: pointer;
   border-bottom: 1px solid #fff;
@@ -566,33 +575,39 @@ body {
   line-height: normal;
   letter-spacing: normal;
 }
-/* line 416, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 417, ../scss/styles.scss */
+  .ui-autocomplete .ui-menu-item {
+    text-align: center;
+  }
+}
+/* line 425, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item:hover {
   background-color: #eee;
   font-weight: 600;
 }
 
-/* line 423, ../scss/styles.scss */
+/* line 432, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;
   height: 100vh;
 }
 @media only screen and (max-width: 959px) {
-  /* line 423, ../scss/styles.scss */
+  /* line 432, ../scss/styles.scss */
   #map {
     width: 100%;
     margin: 0;
   }
 }
 @media only screen and (min-width: 960px) {
-  /* line 423, ../scss/styles.scss */
+  /* line 432, ../scss/styles.scss */
   #map {
     display: block !important;
   }
 }
 
-/* line 437, ../scss/styles.scss */
+/* line 446, ../scss/styles.scss */
 #popup-content {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -610,12 +625,12 @@ body {
   transform: translateX(-50%);
   display: none;
 }
-/* line 447, ../scss/styles.scss */
+/* line 456, ../scss/styles.scss */
 #popup-content.active {
   display: block;
 }
 @media only screen and (max-width: 959px) {
-  /* line 437, ../scss/styles.scss */
+  /* line 446, ../scss/styles.scss */
   #popup-content {
     top: 0;
     bottom: auto;
@@ -626,7 +641,7 @@ body {
     max-width: 100%;
   }
 }
-/* line 461, ../scss/styles.scss */
+/* line 470, ../scss/styles.scss */
 #popup-content .back {
   display: none;
   position: relative;
@@ -641,7 +656,7 @@ body {
   color: #000;
   border-bottom: 1px solid #7f7f7f;
 }
-/* line 475, ../scss/styles.scss */
+/* line 484, ../scss/styles.scss */
 #popup-content .back:before {
   content: '';
   position: absolute;
@@ -656,12 +671,12 @@ body {
   height: 15px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 461, ../scss/styles.scss */
+  /* line 470, ../scss/styles.scss */
   #popup-content .back {
     display: block;
   }
 }
-/* line 493, ../scss/styles.scss */
+/* line 502, ../scss/styles.scss */
 #popup-content .block-title {
   display: flex;
   flex-direction: column;
@@ -670,19 +685,19 @@ body {
   background-color: #f5f5f5;
 }
 @media only screen and (max-width: 959px) {
-  /* line 493, ../scss/styles.scss */
+  /* line 502, ../scss/styles.scss */
   #popup-content .block-title {
     align-items: start;
     padding: 18px 70px 0 20px;
   }
 }
-/* line 505, ../scss/styles.scss */
+/* line 514, ../scss/styles.scss */
 #popup-content .block-title .name {
   text-transform: uppercase;
   font-size: 13px;
   padding-bottom: 15px;
 }
-/* line 511, ../scss/styles.scss */
+/* line 520, ../scss/styles.scss */
 #popup-content .block-content {
   width: 100%;
   display: flex;
@@ -694,13 +709,13 @@ body {
   position: relative;
 }
 @media only screen and (max-width: 959px) {
-  /* line 511, ../scss/styles.scss */
+  /* line 520, ../scss/styles.scss */
   #popup-content .block-content {
     background-color: #f5f5f5;
     padding: 0 0 18px;
   }
 }
-/* line 526, ../scss/styles.scss */
+/* line 535, ../scss/styles.scss */
 #popup-content .block-content ul {
   width: 100%;
   display: flex;
@@ -708,42 +723,42 @@ body {
   justify-content: space-around;
 }
 @media only screen and (max-width: 959px) {
-  /* line 526, ../scss/styles.scss */
+  /* line 535, ../scss/styles.scss */
   #popup-content .block-content ul {
     display: block;
   }
 }
-/* line 536, ../scss/styles.scss */
+/* line 545, ../scss/styles.scss */
 #popup-content .block-content ul li {
   /*				&.opening-time {
   					position: relative;
   				}*/
 }
-/* line 540, ../scss/styles.scss */
+/* line 549, ../scss/styles.scss */
 #popup-content .block-content ul li .title {
   padding-bottom: 20px;
   text-transform: uppercase;
   font-size: 13px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 536, ../scss/styles.scss */
+  /* line 545, ../scss/styles.scss */
   #popup-content .block-content ul li {
     padding: 15px 20px 10px;
   }
-  /* line 548, ../scss/styles.scss */
+  /* line 557, ../scss/styles.scss */
   #popup-content .block-content ul li.contacts {
     padding: 0 20px 10px;
   }
-  /* line 550, ../scss/styles.scss */
+  /* line 559, ../scss/styles.scss */
   #popup-content .block-content ul li.contacts .title {
     display: none;
   }
-  /* line 555, ../scss/styles.scss */
+  /* line 564, ../scss/styles.scss */
   #popup-content .block-content ul li + li {
     border-top: 1px solid #dddddd;
   }
 }
-/* line 562, ../scss/styles.scss */
+/* line 571, ../scss/styles.scss */
 #popup-content .build-route {
   position: absolute;
   bottom: -18px;
@@ -759,7 +774,7 @@ body {
   border-radius: 20px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 562, ../scss/styles.scss */
+  /* line 571, ../scss/styles.scss */
   #popup-content .build-route {
     margin: 0;
     top: 65px;
@@ -768,7 +783,7 @@ body {
   }
 }
 
-/* line 585, ../scss/styles.scss */
+/* line 594, ../scss/styles.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -780,12 +795,12 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   visibility: hidden;
 }
-/* line 596, ../scss/styles.scss */
+/* line 605, ../scss/styles.scss */
 .controls.visible {
   visibility: visible;
 }
 
-/* line 601, ../scss/styles.scss */
+/* line 610, ../scss/styles.scss */
 #origin-input,
 #destination-input {
   margin-left: 12px;
@@ -822,13 +837,13 @@ body {
   color: #000;
 }
 
-/* line 614, ../scss/styles.scss */
+/* line 623, ../scss/styles.scss */
 #origin-input:focus,
 #destination-input:focus {
   border-color: #000;
 }
 
-/* line 619, ../scss/styles.scss */
+/* line 628, ../scss/styles.scss */
 #mode-selector {
   color: #000;
   background-color: #f5f5f5;
@@ -836,7 +851,7 @@ body {
   padding: 5px 11px 0px 11px;
 }
 
-/* line 626, ../scss/styles.scss */
+/* line 635, ../scss/styles.scss */
 #mode-selector label {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;

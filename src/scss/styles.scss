@@ -407,12 +407,21 @@ body {
 	padding: 0 0 0 10px;
 	max-width: 300px;
 
-	.ui-menu-item{
+	@media only screen and(max-width: $medium-bp-max) {
+		max-width: unset;
+		width: 100%;
+		text-align: center;
+		padding: 0;
+	}
+
+		.ui-menu-item{
 		cursor: pointer;
 		border-bottom: 1px solid #fff;
 		padding-bottom: 5px;
 		@include font-open-sans();
-
+			@media only screen and(max-width: $medium-bp-max) {
+				text-align: center;
+			}
 		&:hover{
 			background-color: #eee;
 			font-weight: 600;
