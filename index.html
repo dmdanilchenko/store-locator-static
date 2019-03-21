@@ -18,6 +18,31 @@
   </head>
   <body>
 	<div class="root">
+		<div id="popup-content">
+			<a class="back" href="#">Back</a>
+			<div class="block-title">
+				<div class="name"></div>
+				<div class="address"></div>
+			</div>
+			<div class="block-content">
+				<ul>
+					<li class='contacts'>
+						<div class="title">Contatti</div>
+						<p></p>
+					</li>
+					<li class='opening-time'>
+						<div class="title">Orari di Apertura</div>
+						<p></p>
+					</li>
+					<li class='available-collections'>
+						<div class="title">Collezioni Disponibili</div>
+						<p></p>
+					</li>
+				</ul>
+			</div>
+			<a class='build-route' href='#'>Build route</a>
+		</div>
+		
 		<div class="filters">
 			<div class="search-params-box">
                 <div class="input-btns-wrapper">
@@ -34,7 +59,7 @@
 			</div>
 
 			<div class="mobile-tabs">
-				<button class="tablinks active" onclick="openTab(event, 'map')">Map</button>
+				<button id="tab-map" class="tablinks active" onclick="openTab(event, 'map')">Map</button>
 				<button id="tab-list" class="tablinks" onclick="openTab(event, 'tab-list-content')">List</button>
 			</div>
 
@@ -85,31 +110,6 @@
 
 		</div>
 		<div id="map" class="tabcontent tab-map">
-		</div>
-		
-		<div id="popup-content">
-			<a class="back" href="#">Back</a>
-			<div class="block-title">
-				<div class="name"></div>
-				<div class="address"></div>
-			</div>
-			<div class="block-content">
-				<ul>
-					<li class='contacts'>
-						<div class="title">Contatti</div>
-						<p></p>
-					</li>
-					<li class='opening-time'>
-						<div class="title">Orari di Apertura</div>
-						<p></p>
-					</li>
-					<li class='available-collections'>
-						<div class="title">Collezioni Disponibili</div>
-						<p></p>
-					</li>
-				</ul>
-			</div>
-			<a class='build-route' href='#'>Build route</a>
 		</div>
 	</div>
 

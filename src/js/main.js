@@ -451,6 +451,8 @@ function createMarker(latlng, markerNode) {
 			$(this).addClass('active');
 			
 			fillPopup(markerId);
+			openTab(event, 'map');
+			$('.mobile-tabs #tab-map').addClass('active');
 		}
 	});
 	markers.push(marker);
