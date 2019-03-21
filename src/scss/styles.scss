@@ -218,6 +218,7 @@ body {
 		}
 		&.overlay {
 			overflow: hidden;
+			height: 9999px;
 			&:after {
 				content: '\A';
 				position: absolute;
@@ -437,6 +438,22 @@ body {
 	@media only screen and(max-width: $medium-bp-max) {
 		width: 100%;
 		margin: 0;
+
+		&.overlay {
+			overflow: hidden;
+			&:after {
+				content: '\A';
+				position: absolute;
+				width: 100%;
+				height:9999px;
+				max-height: unset;
+				top:0;
+				left:0;
+				background:rgba(0,0,0,0.6);
+				opacity: 1;
+			}
+		}
+
 	}
 	@media only screen and(min-width: $large-bp-min) {
 		display: block !important;
