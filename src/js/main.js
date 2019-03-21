@@ -1,25 +1,10 @@
-﻿/* (function($){
-	'use srtict';
-	
-	
-	
-	console.log($);
-	
-	
-	
-	
-})(jQuery); */
-
-var map;
+﻿var map;
 var directions;
-var originAutocomplete;
-var destinationAutocomplete;
 var data;
 var countries = [];
 var cities = [];
 var markers = [];
 var infoWindow;
-/* var locationSelect; */
 var countrySelect;
 var citySelect;
 var boutiqueList;
@@ -29,10 +14,7 @@ function initMap() {
 	data = getData();	
 	countries = data.countries;
 	
-	
-	/* var sydney = {lat: -33.863276, lng: 151.107977}; */
 	map = new google.maps.Map(document.getElementById('map'), {
-		/* center: sydney, */
 		zoom: 11,
 		mapTypeId: 'roadmap',
 		mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
@@ -40,31 +22,13 @@ function initMap() {
 	infoWindow = new google.maps.InfoWindow();
 	
 	searchButton = document.getElementById("searchButton").onclick = selectByAddress;
-	navigatorButton = document.getElementById("navigatorButton").onclick = directionTo;
-	/* locationSelect = document.getElementById("locationSelect"); */
 	countrySelect 	= document.getElementById("country-select");
 	citySelect 		= document.getElementById("city-select");
 	boutiqueList 	= document.getElementById("boutique-list");
-	
-	/*   locationSelect.onchange = function() {
-	var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
-	if (markerNum != "none"){
-	  google.maps.event.trigger(markers[markerNum], 'click');
-	}
-	}; */
 
 	$('body').on('click', '#boutique-list>li', function(){
 		var markerId = $(this).data( "id" );
 		if (markerId != "none"){
-			
-			$('#boutique-list>li').each(function(){
-				$(this).removeClass('active');
-			});
-			
-			$(this).addClass('active');
-			
-			fillPopup(markerId);
-
 			
 			var foundMarkers = markers.filter(function(marker){
 				return marker.id === markerId;
@@ -80,6 +44,14 @@ function initMap() {
 	fillCountries();
 	fillTypeFilter();
 	initAddressAutocomplete();
+	
+	$('.build-route').on('click', function(){
+		directionTo($('#popup-content .address').html());
+	});
+	
+	$('#navigatorButton').on('click', function(){
+		directionTo($('#addressInput').val());
+	});
 	
 	directions = new AutocompleteDirectionsHandler(map);
 }
@@ -102,26 +74,14 @@ function clearLocations() {
 	for (var i = 0; i < markers.length; i++) {
 		markers[i].setMap(null);
 	}
-	
 	directions.directionsDisplay.set('directions', null);
-
-	
 	markers.length = 0;
-
-	/* locationSelect.innerHTML = ""; */
-/* 	var option = document.createElement("option");
-	option.value = "none";
-	option.innerHTML = "See all results:"; */
-	/* locationSelect.appendChild(option); */
-	
 	boutiqueList.innerHTML = "";
 	$('#popup-content').removeClass('active');
 }
 
 function selectByAddress(){
 	var addressTerm = $('#addressInput').val();
-	
-	
 	var boutiquesByAddress = getFilteredBoutiques().filter(function(boutique){
 		return boutique.address.toLowerCase().indexOf(addressTerm.toLowerCase())>=0;
 	});
@@ -129,15 +89,7 @@ function selectByAddress(){
 	if(boutiquesByAddress.length){
 		var markerId = boutiquesByAddress[0].id;
 		if (markerId != "none"){
-			
-			$('#boutique-list>li').each(function(){
-				$(this).removeClass('active');
-			});
-			
-			$('#boutique-list>li[data-id="'+markerId+'"]').addClass('active');
-			
-			fillPopup(markerId);
-			
+
 			var foundMarkers = markers.filter(function(marker){
 				return marker.id === markerId;
 			});
@@ -162,15 +114,18 @@ function fillPopup(id){
 		$('#popup-content .opening-time p').html(currentBoutique[0].openingTime);
 		$('#popup-content .available-collections p').html(currentBoutique[0].availableCollections);
 		$('#popup-content').addClass('active');
-	}	
+	}
 }
 
-function directionTo(){
+function directionTo(destination){
+	
+	directions.directionsDisplay.set('directions', null);
+	
 	$('#map .controls').addClass('visible');
 	
-	$('#map #destination-input').val($('#addressInput').val());
-	/* google.maps.event.trigger(destinationAutocomplete, 'place_changed'); */
-	if($('#origin-input').val()===''){
+	$('#map #destination-input').val(destination);
+
+	if($('#map #origin-input').val()===''){
 		
 		// Try HTML5 geolocation.
 		if (navigator.geolocation) {
@@ -180,26 +135,18 @@ function directionTo(){
 			  lng: position.coords.longitude
 			};
 
-			/* infoWindow.setPosition(pos);
-			infoWindow.setContent('Location found.');
-			infoWindow.open(map);
-			map.setCenter(pos); */
-			
 			var latlng = {lat: position.coords.latitude, lng: position.coords.longitude};
 			var geocoder = new google.maps.Geocoder();
 			
 			geocoder.geocode({'location': latlng}, function(results, status) {
 			  if (status === 'OK') {
 				if (results[0]) {
-				  /* map.setZoom(11); */
 				  var marker = new google.maps.Marker({
 					position: latlng,
 					map: map
 				  });
-				  /* infowindow.setContent(results[0].formatted_address);
-				  infowindow.open(map, marker); */
-				  $('#origin-input').val(results[0].formatted_address);
-				  /* google.maps.event.trigger(originAutocomplete, 'place_changed'); */
+				  $('#map #origin-input').val(results[0].formatted_address);
+				  directions.route();
 				  
 				} else {
 				  window.alert('No results found');
@@ -217,6 +164,9 @@ function directionTo(){
 		  // Browser doesn't support Geolocation
 		  handleLocationError(false, infoWindow, map.getCenter());
 		}
+		
+	}else{
+		directions.route();
 	}
 	
 
@@ -266,12 +216,9 @@ function searchLocationsNear(center) {
 		var id = markerNodes[i].id;
 		var name = markerNodes[i].name;
 		var address = markerNodes[i].address;
-		/* var distance = parseFloat(markerNodes[i].distance); */
 		var latlng = new google.maps.LatLng(
 		parseFloat(markerNodes[i].lat),
 		parseFloat(markerNodes[i].lng));
-
-		/* createOption(name, distance, i); */
 		
 		createBoutiqueListItem(markerNodes[i]);
 		
@@ -280,11 +227,6 @@ function searchLocationsNear(center) {
 	}
 
 	map.fitBounds(bounds);
-	/* locationSelect.style.visibility = "visible";
-	locationSelect.onchange = function() {
-		var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
-		google.maps.event.trigger(markers[markerNum], 'click');
-	}; */
 }
 
 function getData(){
@@ -454,10 +396,8 @@ function initAddressAutocomplete(filteredBoutiques){
 	$( "#addressInput" ).autocomplete({
 		minLength: 0,
 		source: function( request, response ) {
-		  // extract the last term
 		  var lastTerm = request.term.toLowerCase();
 		  var results = [];
-		  // loop over data, seeking labels & desc
 		  $.each(filteredBoutiques, function(k, v){
 			if(v.address.toLowerCase().indexOf(lastTerm) >= 0){
 			  results.push(v);
@@ -484,21 +424,33 @@ function createMarker(latlng, markerNode) {
 		map: map,
 		position: latlng,
 		icon: 'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'.png',
+		type: markerNode.type.toLowerCase().replace(' ', '-'),
 		id: markerNode.id
 	});
 	google.maps.event.addListener(marker, 'click', function() {
 		infoWindow.setContent(html);
 		infoWindow.open(map, marker);
+		
+		for(var i=0;i<markers.length;i++){
+			markers[i].setIcon('src/icons/marker-'+markers[i].type+'.png'); 
+		}
+		
+		marker.setIcon('src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'-active.png'); 
+		
+		var markerId = markerNode.id;
+		if (markerId != "none"){
+			
+			$('#boutique-list>li').each(function(){
+				$(this).removeClass('active');
+			});
+			$('#boutique-list>li[data-id="'+markerId+'"]').addClass('active');
+			$(this).addClass('active');
+			
+			fillPopup(markerId);
+		}
 	});
 	markers.push(marker);
 }
-
-/* function createOption(name, distance, num) {
-  var option = document.createElement("option");
-  option.value = num;
-  option.innerHTML = name;
-  locationSelect.appendChild(option);
-} */
 
 function createBoutiqueListItem(markerNode){
 	
@@ -559,11 +511,11 @@ function AutocompleteDirectionsHandler(map) {
 	var destinationInput = document.getElementById('destination-input');
 	var modeSelector = document.getElementById('mode-selector');
 
-	originAutocomplete = new google.maps.places.Autocomplete(originInput);
+	var originAutocomplete = new google.maps.places.Autocomplete(originInput);
 	// Specify just the place data fields that you need.
 	originAutocomplete.setFields(['place_id']);
 
-	destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput);
+	var destinationAutocomplete = new google.maps.places.Autocomplete(destinationInput);
 	// Specify just the place data fields that you need.
 	destinationAutocomplete.setFields(['place_id']);
 
@@ -614,7 +566,8 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(aut
 
 AutocompleteDirectionsHandler.prototype.route = function() {
   if (!this.originPlaceId || !this.destinationPlaceId) {
-    return;
+    this.routeUsingStrings($('#map #origin-input').val(), $('#map #destination-input').val());
+	return;
   }
   var me = this;
 
@@ -622,6 +575,27 @@ AutocompleteDirectionsHandler.prototype.route = function() {
       {
         origin: {'placeId': this.originPlaceId},
         destination: {'placeId': this.destinationPlaceId},
+        travelMode: this.travelMode
+      },
+      function(response, status) {
+        if (status === 'OK') {
+          me.directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+};
+
+AutocompleteDirectionsHandler.prototype.routeUsingStrings = function(origin, destination) {
+  if (!origin || !destination) {
+    return;
+  }
+  var me = this;
+
+  this.directionsService.route(
+      {
+        origin: origin,
+        destination: destination,
         travelMode: this.travelMode
       },
       function(response, status) {
