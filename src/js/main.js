@@ -457,10 +457,13 @@ function createMarker(latlng, markerNode) {
 }
 
 function inactivateItem(){
+	
 	$('#popup-content').removeClass('active');
 	$('#boutique-list>li').each(function(){
 		$(this).removeClass('active');
 	});
+	
+	infoWindow.close();
 	
 	for(var i=0;i<markers.length;i++){
 		markers[i].setIcon('src/icons/marker-'+markers[i].type+'.png'); 
