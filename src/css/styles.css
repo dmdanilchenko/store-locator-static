@@ -73,18 +73,30 @@ use as: @media only screen and(min-width: @var) */
 /* BP Max
 use as: @media only screen and(max-width: @var) */
 /* line 43, ../scss/styles.scss */
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 48, ../scss/styles.scss */
 body {
   overflow: hidden;
 }
+@media only screen and (max-width: 959px) {
+  /* line 48, ../scss/styles.scss */
+  body {
+    overflow: auto;
+  }
+}
 
-/* line 47, ../scss/styles.scss */
+/* line 56, ../scss/styles.scss */
 .filters {
   width: 480px;
   float: left;
   height: 100vh;
 }
 @media only screen and (max-width: 959px) {
-  /* line 47, ../scss/styles.scss */
+  /* line 56, ../scss/styles.scss */
   .filters {
     width: 100%;
     float: none;
@@ -92,18 +104,18 @@ body {
   }
 }
 @media only screen and (min-width: 960px) {
-  /* line 58, ../scss/styles.scss */
+  /* line 67, ../scss/styles.scss */
   .filters .mobile-tabs {
     display: none !important;
   }
 }
 @media only screen and (max-width: 959px) {
-  /* line 58, ../scss/styles.scss */
+  /* line 67, ../scss/styles.scss */
   .filters .mobile-tabs {
     width: 100%;
     display: flex;
   }
-  /* line 65, ../scss/styles.scss */
+  /* line 74, ../scss/styles.scss */
   .filters .mobile-tabs .tablinks {
     width: 50%;
     height: 40px;
@@ -120,25 +132,25 @@ body {
     line-height: 1.2;
     letter-spacing: 0.8px;
   }
-  /* line 74, ../scss/styles.scss */
+  /* line 83, ../scss/styles.scss */
   .filters .mobile-tabs .tablinks.active {
     background-color: #f5f5f5;
     color: #323232;
   }
-  /* line 79, ../scss/styles.scss */
+  /* line 88, ../scss/styles.scss */
   .filters .mobile-tabs .tablinks:focus {
     outline: none;
   }
 }
-/* line 86, ../scss/styles.scss */
+/* line 95, ../scss/styles.scss */
 .filters .tabcontent.search-result-box {
   display: none;
 }
-/* line 89, ../scss/styles.scss */
+/* line 98, ../scss/styles.scss */
 .filters .tabcontent.tab-map {
   display: block;
 }
-/* line 94, ../scss/styles.scss */
+/* line 103, ../scss/styles.scss */
 .filters .search-params-box {
   display: flex;
   flex-direction: column;
@@ -146,13 +158,13 @@ body {
   background-color: #f5f5f5;
 }
 @media only screen and (max-width: 959px) {
-  /* line 94, ../scss/styles.scss */
+  /* line 103, ../scss/styles.scss */
   .filters .search-params-box {
     padding: 0;
     background-color: #fff;
   }
 }
-/* line 104, ../scss/styles.scss */
+/* line 113, ../scss/styles.scss */
 .filters .search-params-box input, .filters .search-params-box select {
   height: 42px;
   padding: 0;
@@ -185,50 +197,55 @@ body {
 .filters .search-params-box input:-ms-input-placeholder, .filters .search-params-box select:-ms-input-placeholder {
   color: #000;
 }
-/* line 116, ../scss/styles.scss */
+/* line 125, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper, .filters .search-params-box select {
   margin: 10px 0;
   border: 1px solid #717171;
 }
 @media only screen and (max-width: 959px) {
-  /* line 116, ../scss/styles.scss */
+  /* line 125, ../scss/styles.scss */
   .filters .search-params-box .input-btns-wrapper, .filters .search-params-box select {
     margin: 0;
     border: none;
     border-bottom: 1px solid #717171;
   }
 }
-/* line 126, ../scss/styles.scss */
+/* line 135, ../scss/styles.scss */
 .filters .search-params-box .select-wrapp select {
   width: 100%;
   margin-left: 1px;
   cursor: pointer;
   background: url(../icons/icon-arrow-down.png) no-repeat right;
   -webkit-appearance: none;
+  -moz-appearance: none;
   background-position-x: calc( 100% - 14px );
   background-size: 15px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 126, ../scss/styles.scss */
+  /* line 135, ../scss/styles.scss */
   .filters .search-params-box .select-wrapp select {
     margin: 0;
   }
 }
-/* line 139, ../scss/styles.scss */
+/* line 147, ../scss/styles.scss */
+.filters .search-params-box .select-wrapp select::-ms-expand {
+  display: none;
+}
+/* line 150, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper {
   display: flex;
   flex-direction: row;
 }
-/* line 145, ../scss/styles.scss */
+/* line 156, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text] {
   flex-grow: 2;
   border: none;
 }
-/* line 148, ../scss/styles.scss */
+/* line 159, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text]:focus {
   outline: none;
 }
-/* line 152, ../scss/styles.scss */
+/* line 163, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button] {
   border-top: none;
   border-bottom: none;
@@ -237,7 +254,7 @@ body {
   background: transparent;
   cursor: pointer;
 }
-/* line 160, ../scss/styles.scss */
+/* line 171, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#searchButton {
   background-image: url(../icons/Search_Def_ADA.png);
   background-position: 8px 9px;
@@ -245,7 +262,7 @@ body {
   background-size: 24px;
   width: 40px;
 }
-/* line 167, ../scss/styles.scss */
+/* line 178, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#navigatorButton {
   background-image: url(../icons/ETRO_Geoloc.png);
   background-position: 11px 13px;
@@ -253,20 +270,20 @@ body {
   background-size: 17px;
   width: 40px;
 }
-/* line 177, ../scss/styles.scss */
+/* line 188, ../scss/styles.scss */
 .filters .params-box-bottom-part {
   display: flex;
   justify-content: space-between;
   padding: 10px 30px 20px 59px;
   background-color: #f5f5f5;
 }
-@media only screen and (max-width: 959px) {
-  /* line 177, ../scss/styles.scss */
+@media only screen and (max-width: 479px) {
+  /* line 188, ../scss/styles.scss */
   .filters .params-box-bottom-part {
-    padding: 10px 20px 20px 20px;
+    padding: 10px 30px 20px 30px;
   }
 }
-/* line 185, ../scss/styles.scss */
+/* line 198, ../scss/styles.scss */
 .filters .params-box-bottom-part .boutique-count-wrapper {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -276,12 +293,12 @@ body {
   line-height: 1.42;
   letter-spacing: normal;
 }
-/* line 187, ../scss/styles.scss */
+/* line 200, ../scss/styles.scss */
 .filters .params-box-bottom-part .boutique-count-wrapper .label {
   font-size: 18px;
   text-transform: uppercase;
 }
-/* line 192, ../scss/styles.scss */
+/* line 205, ../scss/styles.scss */
 .filters .params-box-bottom-part .filters-link {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -295,7 +312,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
 }
-/* line 197, ../scss/styles.scss */
+/* line 210, ../scss/styles.scss */
 .filters .params-box-bottom-part .filters-link .plus-icn {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -309,11 +326,11 @@ body {
   top: -4px;
   left: -17px;
 }
-/* line 203, ../scss/styles.scss */
+/* line 216, ../scss/styles.scss */
 .filters .params-box-bottom-part .filters-link .label {
   text-decoration: underline;
 }
-/* line 208, ../scss/styles.scss */
+/* line 221, ../scss/styles.scss */
 .filters .search-result-box {
   position: relative;
   overflow-y: auto;
@@ -321,24 +338,24 @@ body {
   max-height: calc(100% - 277px);
 }
 @media only screen and (max-width: 959px) {
-  /* line 208, ../scss/styles.scss */
+  /* line 221, ../scss/styles.scss */
   .filters .search-result-box {
     overflow: auto;
     max-height: calc(100vh - 240px);
   }
 }
 @media only screen and (min-width: 960px) {
-  /* line 208, ../scss/styles.scss */
+  /* line 221, ../scss/styles.scss */
   .filters .search-result-box {
     display: inherit !important;
   }
 }
-/* line 220, ../scss/styles.scss */
+/* line 233, ../scss/styles.scss */
 .filters .search-result-box.overlay {
   overflow: hidden;
   height: 9999px;
 }
-/* line 223, ../scss/styles.scss */
+/* line 236, ../scss/styles.scss */
 .filters .search-result-box.overlay:after {
   content: '\A';
   position: absolute;
@@ -350,7 +367,7 @@ body {
   background: rgba(0, 0, 0, 0.6);
   opacity: 1;
 }
-/* line 236, ../scss/styles.scss */
+/* line 249, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li {
   position: relative;
   height: 69px;
@@ -358,50 +375,50 @@ body {
   padding-top: 17px;
   padding-bottom: 13px;
 }
-/* line 242, ../scss/styles.scss */
+/* line 255, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li:after {
   content: '';
   background: #dddddd;
   width: 100%;
   height: 1px;
 }
-/* line 249, ../scss/styles.scss */
+/* line 262, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active {
   background-color: #eee;
 }
-/* line 251, ../scss/styles.scss */
+/* line 264, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active.etro-boutique {
   background: url(../icons/etro-boutique-icon.png) no-repeat right;
   background-size: 25px;
   background-position-x: 27px;
   background-position-y: 21px;
 }
-@media only screen and (max-width: 959px) {
-  /* line 251, ../scss/styles.scss */
+@media only screen and (max-width: 479px) {
+  /* line 264, ../scss/styles.scss */
   .filters .search-result-box ul#boutique-list > li.active.etro-boutique {
-    background-position-x: 20px;
+    background: none;
   }
 }
-/* line 260, ../scss/styles.scss */
+/* line 274, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active.etro-outlet {
   background: url(../icons/etro-outlet-icon.png) no-repeat right;
   background-size: 25px;
   background-position-x: 27px;
   background-position-y: 21px;
 }
-@media only screen and (max-width: 959px) {
-  /* line 260, ../scss/styles.scss */
+@media only screen and (max-width: 479px) {
+  /* line 274, ../scss/styles.scss */
   .filters .search-result-box ul#boutique-list > li.active.etro-outlet {
-    background-position-x: 20px;
+    background: none;
   }
 }
 @media only screen and (max-width: 959px) {
-  /* line 270, ../scss/styles.scss */
+  /* line 285, ../scss/styles.scss */
   .filters .search-result-box ul#boutique-list > li.active a div {
     padding: 0 34px 0 49px;
   }
 }
-/* line 278, ../scss/styles.scss */
+/* line 293, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -413,7 +430,7 @@ body {
   letter-spacing: normal;
   text-decoration: none;
 }
-/* line 281, ../scss/styles.scss */
+/* line 296, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a:after {
   content: '';
   position: absolute;
@@ -428,43 +445,43 @@ body {
   height: 15px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 281, ../scss/styles.scss */
+  /* line 296, ../scss/styles.scss */
   .filters .search-result-box ul#boutique-list > li a:after {
     right: 20px;
   }
 }
-/* line 297, ../scss/styles.scss */
+/* line 312, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div {
-  padding: 0 30px 0 59px;
+  padding: 0 50px 0 59px;
 }
-@media only screen and (max-width: 959px) {
-  /* line 297, ../scss/styles.scss */
+@media only screen and (max-width: 479px) {
+  /* line 312, ../scss/styles.scss */
   .filters .search-result-box ul#boutique-list > li a div {
-    padding: 0 34px 0 20px;
+    padding: 0 50px 0 30px;
   }
 }
-/* line 302, ../scss/styles.scss */
+/* line 318, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div.name {
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 306, ../scss/styles.scss */
+/* line 322, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div.address {
   font-size: 13px;
 }
-/* line 316, ../scss/styles.scss */
+/* line 332, ../scss/styles.scss */
 .filters .filter-by-type.popup-wrapper {
-  position: sticky;
+  position: relative;
   top: 0;
   right: 0;
   z-index: 9;
 }
-/* line 323, ../scss/styles.scss */
+/* line 340, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup {
   display: none;
   position: relative;
 }
-/* line 327, ../scss/styles.scss */
+/* line 344, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup.active {
   display: block;
   position: absolute;
@@ -475,9 +492,10 @@ body {
   background-color: #f5f5f5;
   padding: 18px 27px;
   margin: 0 0 0 auto;
+  z-index: 100;
 }
 @media only screen and (max-width: 479px) {
-  /* line 327, ../scss/styles.scss */
+  /* line 344, ../scss/styles.scss */
   .filters .filter-by-type .filter-by-type-popup.active {
     width: auto;
     left: 0;
@@ -485,7 +503,7 @@ body {
     padding-bottom: 44px;
   }
 }
-/* line 346, ../scss/styles.scss */
+/* line 364, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -498,11 +516,11 @@ body {
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 350, ../scss/styles.scss */
+/* line 368, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label {
   cursor: pointer;
 }
-/* line 352, ../scss/styles.scss */
+/* line 370, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox] {
   display: inline-block;
   height: 12px;
@@ -516,7 +534,7 @@ body {
   background: transparent;
   cursor: pointer;
 }
-/* line 365, ../scss/styles.scss */
+/* line 383, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox]:checked:before {
   content: '';
   display: block;
@@ -532,7 +550,7 @@ body {
   color: #f75e24;
   margin-right: 8px;
 }
-/* line 387, ../scss/styles.scss */
+/* line 405, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.close {
   position: absolute;
   top: 15px;
@@ -555,7 +573,7 @@ body {
   background-size: contain;
   cursor: pointer;
 }
-/* line 402, ../scss/styles.scss */
+/* line 420, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.apply {
   width: 250px;
   height: 44px;
@@ -573,7 +591,7 @@ body {
   letter-spacing: 0.8;
 }
 @media only screen and (max-width: 479px) {
-  /* line 402, ../scss/styles.scss */
+  /* line 420, ../scss/styles.scss */
   .filters .filter-by-type .filter-by-type-popup button.apply {
     width: calc( 100% + 2px );
     position: absolute;
@@ -584,14 +602,14 @@ body {
   }
 }
 
-/* line 425, ../scss/styles.scss */
+/* line 443, ../scss/styles.scss */
 .ui-autocomplete {
   background-color: #f5f5f5;
   padding: 0 0 0 10px;
   max-width: 300px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 425, ../scss/styles.scss */
+  /* line 443, ../scss/styles.scss */
   .ui-autocomplete {
     max-width: unset;
     width: 100%;
@@ -599,7 +617,7 @@ body {
     padding: 0;
   }
 }
-/* line 437, ../scss/styles.scss */
+/* line 455, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item {
   cursor: pointer;
   border-bottom: 1px solid #fff;
@@ -613,34 +631,36 @@ body {
   letter-spacing: normal;
 }
 @media only screen and (max-width: 959px) {
-  /* line 437, ../scss/styles.scss */
+  /* line 455, ../scss/styles.scss */
   .ui-autocomplete .ui-menu-item {
     text-align: center;
   }
 }
-/* line 445, ../scss/styles.scss */
+/* line 463, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item:hover {
   background-color: #eee;
   font-weight: 600;
 }
 
-/* line 452, ../scss/styles.scss */
+/* line 470, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;
   height: 100vh;
 }
 @media only screen and (max-width: 959px) {
-  /* line 452, ../scss/styles.scss */
+  /* line 470, ../scss/styles.scss */
   #map {
     width: 100%;
     margin: 0;
+    height: 80vh;
+    min-height: 320px;
   }
-  /* line 461, ../scss/styles.scss */
+  /* line 482, ../scss/styles.scss */
   #map.overlay {
     overflow: hidden;
   }
-  /* line 463, ../scss/styles.scss */
+  /* line 484, ../scss/styles.scss */
   #map.overlay:after {
     content: '\A';
     position: absolute;
@@ -654,13 +674,13 @@ body {
   }
 }
 @media only screen and (min-width: 960px) {
-  /* line 452, ../scss/styles.scss */
+  /* line 470, ../scss/styles.scss */
   #map {
     display: block !important;
   }
 }
 
-/* line 482, ../scss/styles.scss */
+/* line 502, ../scss/styles.scss */
 #popup-content {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -677,24 +697,26 @@ body {
   left: calc( 50% + 240px);
   transform: translateX(-50%);
   display: none;
+  z-index: 1;
 }
-/* line 492, ../scss/styles.scss */
+/* line 513, ../scss/styles.scss */
 #popup-content.active {
   display: block;
 }
 @media only screen and (max-width: 959px) {
-  /* line 482, ../scss/styles.scss */
+  /* line 502, ../scss/styles.scss */
   #popup-content {
-    top: 0;
-    bottom: auto;
-    left: 0;
-    right: 0;
     transform: none;
     width: 100%;
     max-width: 100%;
+    position: static;
+  }
+  /* line 525, ../scss/styles.scss */
+  #popup-content.active + .filters {
+    display: none;
   }
 }
-/* line 506, ../scss/styles.scss */
+/* line 531, ../scss/styles.scss */
 #popup-content .back {
   display: none;
   position: relative;
@@ -709,7 +731,7 @@ body {
   color: #000;
   border-bottom: 1px solid #7f7f7f;
 }
-/* line 520, ../scss/styles.scss */
+/* line 545, ../scss/styles.scss */
 #popup-content .back:before {
   content: '';
   position: absolute;
@@ -724,12 +746,12 @@ body {
   height: 15px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 506, ../scss/styles.scss */
+  /* line 531, ../scss/styles.scss */
   #popup-content .back {
     display: block;
   }
 }
-/* line 538, ../scss/styles.scss */
+/* line 563, ../scss/styles.scss */
 #popup-content .block-title {
   display: flex;
   flex-direction: column;
@@ -738,19 +760,19 @@ body {
   background-color: #f5f5f5;
 }
 @media only screen and (max-width: 959px) {
-  /* line 538, ../scss/styles.scss */
+  /* line 563, ../scss/styles.scss */
   #popup-content .block-title {
     align-items: start;
     padding: 18px 70px 0 20px;
   }
 }
-/* line 550, ../scss/styles.scss */
+/* line 575, ../scss/styles.scss */
 #popup-content .block-title .name {
   text-transform: uppercase;
   font-size: 13px;
   padding-bottom: 15px;
 }
-/* line 556, ../scss/styles.scss */
+/* line 581, ../scss/styles.scss */
 #popup-content .block-content {
   width: 100%;
   display: flex;
@@ -762,13 +784,13 @@ body {
   position: relative;
 }
 @media only screen and (max-width: 959px) {
-  /* line 556, ../scss/styles.scss */
+  /* line 581, ../scss/styles.scss */
   #popup-content .block-content {
     background-color: #f5f5f5;
     padding: 0 0 18px;
   }
 }
-/* line 571, ../scss/styles.scss */
+/* line 596, ../scss/styles.scss */
 #popup-content .block-content ul {
   width: 100%;
   display: flex;
@@ -776,42 +798,42 @@ body {
   justify-content: space-around;
 }
 @media only screen and (max-width: 959px) {
-  /* line 571, ../scss/styles.scss */
+  /* line 596, ../scss/styles.scss */
   #popup-content .block-content ul {
     display: block;
   }
 }
-/* line 581, ../scss/styles.scss */
+/* line 606, ../scss/styles.scss */
 #popup-content .block-content ul li {
   /*				&.opening-time {
   					position: relative;
   				}*/
 }
-/* line 585, ../scss/styles.scss */
+/* line 610, ../scss/styles.scss */
 #popup-content .block-content ul li .title {
   padding-bottom: 20px;
   text-transform: uppercase;
   font-size: 13px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 581, ../scss/styles.scss */
+  /* line 606, ../scss/styles.scss */
   #popup-content .block-content ul li {
     padding: 15px 20px 10px;
   }
-  /* line 593, ../scss/styles.scss */
+  /* line 618, ../scss/styles.scss */
   #popup-content .block-content ul li.contacts {
     padding: 0 20px 10px;
   }
-  /* line 595, ../scss/styles.scss */
+  /* line 620, ../scss/styles.scss */
   #popup-content .block-content ul li.contacts .title {
     display: none;
   }
-  /* line 600, ../scss/styles.scss */
+  /* line 625, ../scss/styles.scss */
   #popup-content .block-content ul li + li {
     border-top: 1px solid #dddddd;
   }
 }
-/* line 607, ../scss/styles.scss */
+/* line 632, ../scss/styles.scss */
 #popup-content .build-route {
   position: absolute;
   bottom: -18px;
@@ -827,7 +849,7 @@ body {
   border-radius: 20px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 607, ../scss/styles.scss */
+  /* line 632, ../scss/styles.scss */
   #popup-content .build-route {
     margin: 0;
     top: 65px;
@@ -836,7 +858,7 @@ body {
   }
 }
 
-/* line 630, ../scss/styles.scss */
+/* line 655, ../scss/styles.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -848,18 +870,18 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   visibility: hidden;
 }
-/* line 641, ../scss/styles.scss */
+/* line 666, ../scss/styles.scss */
 .controls.visible {
   visibility: visible;
 }
 @media only screen and (max-width: 959px) {
-  /* line 630, ../scss/styles.scss */
+  /* line 655, ../scss/styles.scss */
   .controls {
     display: block;
   }
 }
 
-/* line 650, ../scss/styles.scss */
+/* line 675, ../scss/styles.scss */
 #origin-input,
 #destination-input {
   margin-left: 12px;
@@ -897,7 +919,7 @@ body {
 }
 
 @media only screen and (max-width: 1439px) {
-  /* line 664, ../scss/styles.scss */
+  /* line 689, ../scss/styles.scss */
   #origin-input {
     left: 0 !important;
     top: 50px !important;
@@ -905,20 +927,20 @@ body {
 }
 
 @media only screen and (max-width: 1439px) {
-  /* line 671, ../scss/styles.scss */
+  /* line 696, ../scss/styles.scss */
   #destination-input {
     left: 0 !important;
     top: 95px !important;
   }
 }
 
-/* line 678, ../scss/styles.scss */
+/* line 703, ../scss/styles.scss */
 #origin-input:focus,
 #destination-input:focus {
   border-color: #000;
 }
 
-/* line 683, ../scss/styles.scss */
+/* line 708, ../scss/styles.scss */
 #mode-selector {
   color: #000;
   background-color: #f5f5f5;
@@ -926,14 +948,14 @@ body {
   padding: 5px 11px 0px 11px;
 }
 @media only screen and (max-width: 1439px) {
-  /* line 683, ../scss/styles.scss */
+  /* line 708, ../scss/styles.scss */
   #mode-selector {
     left: 0 !important;
     top: 140px !important;
   }
 }
 
-/* line 695, ../scss/styles.scss */
+/* line 720, ../scss/styles.scss */
 #mode-selector label {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;

@@ -138,11 +138,13 @@ body {
 				cursor: pointer;
 				background: url(../icons/icon-arrow-down.png) no-repeat right;
 				-webkit-appearance: none;
+				-moz-appearance: none;
 				background-position-x: calc( 100% - 14px );
 				background-size: 15px;
 				@media only screen and(max-width: $medium-bp-max) {
 					margin: 0;
 				}
+				&::-ms-expand { display: none; }
 			}
 		}
 		.input-btns-wrapper {
@@ -328,7 +330,8 @@ body {
 
 	.filter-by-type {
 		&.popup-wrapper {
-			position: sticky;
+			//position: sticky;
+			position: relative;
 			top: 0;
 			right: 0;
 			z-index: 9;
@@ -348,6 +351,7 @@ body {
 				background-color: #f5f5f5;
 				padding: 18px 27px;
 				margin: 0 0 0 auto;
+				z-index: 100;
 				@media only screen and(max-width: $xsmall-bp-max) {
 					width: auto;
 					left: 0;
