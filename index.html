@@ -31,22 +31,24 @@
                 <div class="select-wrapp">
                     <select id="city-select"></select>
                 </div>
-                <div class="params-box-bottom-part">
-                    <div class="boutiques-qty boutique-count-wrapper">
-                        <p class="label">boutiques</p>
-                        <p class="count-msg"><span class="qty">00</span>&nbsp;<span>boutique trovate</span></p>
-                    </div>
-                    <div class="filter-by-type">
-                        <a href="#" class="open filters-link"><span class="plus-icn">+</span><span class="label">Filters</span></a>
-                    </div>
+			</div>
 
-                </div>
+			<div class="mobile-tabs">
+				<button class="tablinks active" onclick="openTab(event, 'map')">Map</button>
+				<button id="tab-list" class="tablinks" onclick="openTab(event, 'tab-list-content')">List</button>
+			</div>
 
+			<div class="params-box-bottom-part">
+				<div class="boutiques-qty boutique-count-wrapper">
+					<p class="label">boutiques</p>
+					<p class="count-msg"><span class="qty">00</span>&nbsp;<span>boutique trovate</span></p>
+				</div>
+				<div class="filter-by-type">
+					<a href="#" class="open filters-link"><span class="plus-icn">+</span><span class="label">Filters</span></a>
+				</div>
 			</div>
 			
-			<div></div>
-			
-            <div class="search-result-box">
+            <div id="tab-list-content" class="search-result-box tabcontent">
 
                 <div class="filter-by-type popup-wrapper">
                     <div class="filter-by-type-popup">
@@ -82,7 +84,7 @@
 			</div>
 
 		</div>
-		<div id="map">
+		<div id="map" class="tabcontent tab-map">
 		</div>
 		
 		<div id="popup-content">

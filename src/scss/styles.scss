@@ -54,13 +54,55 @@ body {
 		float: none;
 		height: auto;
 	}
+
+	.mobile-tabs {
+		@media only screen and(min-width: $large-bp-min) {
+			display: none !important;
+		}
+		@media only screen and(max-width: $medium-bp-max) {
+			width: 100%;
+			display: flex;
+			.tablinks {
+				width: 50%;
+				height: 40px;
+				border: none;
+				color: #aeaeae;
+				background-color: #636363;
+				cursor: pointer;
+				text-transform: uppercase;
+				@include font-open-sans($size:14px,$weight:600,$lh:1.2,$ls:0.8px);
+				&.active {
+					background-color: #f5f5f5;
+					color: #323232;
+					//font-weight: 600;
+				}
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+	}
+	.tabcontent {
+		&.search-result-box {
+			display: none;
+		}
+		&.tab-map {
+			display: block;
+		}
+	}
+
 	.search-params-box {
 		display: flex;
 		flex-direction: column;
-		padding: 10px 30px 20px 59px;
+		//padding: 10px 30px 20px 59px;
+		padding: 10px 30px 0 59px;
 		background-color: #f5f5f5;
-		max-height: 315px;
-		input, select {
+		//max-height: 315px;
+		@media only screen and(max-width: $medium-bp-max) {
+			padding: 0;
+			background-color: #fff;
+		}
+			input, select {
 			height: 42px;
 			padding: 0;
 			text-indent: 20px;
@@ -75,6 +117,11 @@ body {
 		.input-btns-wrapper, select {
 			margin: 10px 0;
 			border: 1px solid #717171;
+			@media only screen and(max-width: $medium-bp-max) {
+				margin: 0;
+				border: none;
+				border-bottom: 1px solid #717171;
+			}
 		}
 		.select-wrapp {
 			select {
@@ -85,11 +132,17 @@ body {
 				-webkit-appearance: none;
 				background-position-x: calc( 100% - 14px );
 				background-size: 15px;
+				@media only screen and(max-width: $medium-bp-max) {
+					margin: 0;
+				}
 			}
 		}
 		.input-btns-wrapper {
 			display:flex;
 			flex-direction:row;
+			@media only screen and(max-width: $medium-bp-max) {
+				//border-top: 1px solid #717171;
+			}
 			input[type=text] {
 				flex-grow:2;
 				border:none;
@@ -121,37 +174,33 @@ body {
 				}
 			}
 		}
-		.params-box-bottom-part {
-			display: flex;
-			justify-content: space-between;
-			margin-top: 15px;
-			.boutique-count-wrapper {
-				@include font-open-sans($lh:1.42);
-				.label {
-					font-size: 18px;
-					text-transform: uppercase;
-				}
-			}
-			.filters-link {
-				@include font-open-sans($color:#000,$lh:2.08);
-				position: relative;
+	}
+	.params-box-bottom-part {
+		display: flex;
+		justify-content: space-between;
+		//margin-top: 15px;
+		padding: 10px 30px 20px 59px;
+		background-color: #f5f5f5;
+		.boutique-count-wrapper {
+			@include font-open-sans($lh:1.42);
+			.label {
+				font-size: 18px;
 				text-transform: uppercase;
-				text-decoration: none;
-/*				&:before {
-					content: '+';
-					@include font-open-sans($color:#777573,$size:19px);
-					margin-right: 5px;
-					display: inline-block;
-				}*/
-				.plus-icn {
-					@include font-open-sans($color:#777573,$size:19px);
-					position: absolute;
-					top: -4px;
-					left: -17px;
-				}
-				.label {
-					text-decoration: underline;
-				}
+			}
+		}
+		.filters-link {
+			@include font-open-sans($color:#000,$lh:2.08);
+			position: relative;
+			text-transform: uppercase;
+			text-decoration: none;
+			.plus-icn {
+				@include font-open-sans($color:#777573,$size:19px);
+				position: absolute;
+				top: -4px;
+				left: -17px;
+			}
+			.label {
+				text-decoration: underline;
 			}
 		}
 	}
@@ -160,6 +209,13 @@ body {
 		overflow-y: auto;
 		height: 100%;
 		max-height: calc(100% - 277px);
+		@media only screen and(max-width: $medium-bp-max) {
+			overflow: auto;
+			max-height: calc(100vh - 240px);
+		}
+		@media only screen and(min-width: $large-bp-min) {
+			display: inherit !important;
+		}
 		&.overlay {
 			overflow: hidden;
 			&:after {
@@ -372,6 +428,9 @@ body {
 	@media only screen and(max-width: $medium-bp-max) {
 		width: 100%;
 		margin: 0;
+	}
+	@media only screen and(min-width: $large-bp-min) {
+		display: block !important;
 	}
 }
 
