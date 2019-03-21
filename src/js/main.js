@@ -53,6 +53,10 @@ function initMap() {
 		directionTo($('#addressInput').val());
 	});
 	
+	$('#popup-content .back').on('click', function(){
+		inactivateItem();
+	});
+	
 	directions = new AutocompleteDirectionsHandler(map);
 }
 
@@ -450,6 +454,17 @@ function createMarker(latlng, markerNode) {
 		}
 	});
 	markers.push(marker);
+}
+
+function inactivateItem(){
+	$('#popup-content').removeClass('active');
+	$('#boutique-list>li').each(function(){
+		$(this).removeClass('active');
+	});
+	
+	for(var i=0;i<markers.length;i++){
+		markers[i].setIcon('src/icons/marker-'+markers[i].type+'.png'); 
+	}
 }
 
 function createBoutiqueListItem(markerNode){
