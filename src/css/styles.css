@@ -152,7 +152,7 @@ body {
     background-color: #fff;
   }
 }
-/* line 105, ../scss/styles.scss */
+/* line 104, ../scss/styles.scss */
 .filters .search-params-box input, .filters .search-params-box select {
   height: 42px;
   padding: 0;
@@ -185,20 +185,20 @@ body {
 .filters .search-params-box input:-ms-input-placeholder, .filters .search-params-box select:-ms-input-placeholder {
   color: #000;
 }
-/* line 117, ../scss/styles.scss */
+/* line 116, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper, .filters .search-params-box select {
   margin: 10px 0;
   border: 1px solid #717171;
 }
 @media only screen and (max-width: 959px) {
-  /* line 117, ../scss/styles.scss */
+  /* line 116, ../scss/styles.scss */
   .filters .search-params-box .input-btns-wrapper, .filters .search-params-box select {
     margin: 0;
     border: none;
     border-bottom: 1px solid #717171;
   }
 }
-/* line 127, ../scss/styles.scss */
+/* line 126, ../scss/styles.scss */
 .filters .search-params-box .select-wrapp select {
   width: 100%;
   margin-left: 1px;
@@ -209,26 +209,26 @@ body {
   background-size: 15px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 127, ../scss/styles.scss */
+  /* line 126, ../scss/styles.scss */
   .filters .search-params-box .select-wrapp select {
     margin: 0;
   }
 }
-/* line 140, ../scss/styles.scss */
+/* line 139, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper {
   display: flex;
   flex-direction: row;
 }
-/* line 146, ../scss/styles.scss */
+/* line 145, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text] {
   flex-grow: 2;
   border: none;
 }
-/* line 149, ../scss/styles.scss */
+/* line 148, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=text]:focus {
   outline: none;
 }
-/* line 153, ../scss/styles.scss */
+/* line 152, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button] {
   border-top: none;
   border-bottom: none;
@@ -237,7 +237,7 @@ body {
   background: transparent;
   cursor: pointer;
 }
-/* line 161, ../scss/styles.scss */
+/* line 160, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#searchButton {
   background-image: url(../icons/search-icon.svg);
   background-position: 7px 9px;
@@ -245,7 +245,7 @@ body {
   background-size: 25px;
   width: 40px;
 }
-/* line 168, ../scss/styles.scss */
+/* line 167, ../scss/styles.scss */
 .filters .search-params-box .input-btns-wrapper input[type=button]#navigatorButton {
   background-image: url(../icons/nav-arrrow.png);
   background-position: 8px 11px;
@@ -253,14 +253,20 @@ body {
   background-size: 24px;
   width: 40px;
 }
-/* line 178, ../scss/styles.scss */
+/* line 177, ../scss/styles.scss */
 .filters .params-box-bottom-part {
   display: flex;
   justify-content: space-between;
   padding: 10px 30px 20px 59px;
   background-color: #f5f5f5;
 }
-/* line 184, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 177, ../scss/styles.scss */
+  .filters .params-box-bottom-part {
+    padding: 10px 20px 20px 20px;
+  }
+}
+/* line 185, ../scss/styles.scss */
 .filters .params-box-bottom-part .boutique-count-wrapper {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -270,12 +276,12 @@ body {
   line-height: 1.42;
   letter-spacing: normal;
 }
-/* line 186, ../scss/styles.scss */
+/* line 187, ../scss/styles.scss */
 .filters .params-box-bottom-part .boutique-count-wrapper .label {
   font-size: 18px;
   text-transform: uppercase;
 }
-/* line 191, ../scss/styles.scss */
+/* line 192, ../scss/styles.scss */
 .filters .params-box-bottom-part .filters-link {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -289,7 +295,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
 }
-/* line 196, ../scss/styles.scss */
+/* line 197, ../scss/styles.scss */
 .filters .params-box-bottom-part .filters-link .plus-icn {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -303,11 +309,11 @@ body {
   top: -4px;
   left: -17px;
 }
-/* line 202, ../scss/styles.scss */
+/* line 203, ../scss/styles.scss */
 .filters .params-box-bottom-part .filters-link .label {
   text-decoration: underline;
 }
-/* line 207, ../scss/styles.scss */
+/* line 208, ../scss/styles.scss */
 .filters .search-result-box {
   position: relative;
   overflow-y: auto;
@@ -315,24 +321,24 @@ body {
   max-height: calc(100% - 277px);
 }
 @media only screen and (max-width: 959px) {
-  /* line 207, ../scss/styles.scss */
+  /* line 208, ../scss/styles.scss */
   .filters .search-result-box {
     overflow: auto;
     max-height: calc(100vh - 240px);
   }
 }
 @media only screen and (min-width: 960px) {
-  /* line 207, ../scss/styles.scss */
+  /* line 208, ../scss/styles.scss */
   .filters .search-result-box {
     display: inherit !important;
   }
 }
-/* line 219, ../scss/styles.scss */
+/* line 220, ../scss/styles.scss */
 .filters .search-result-box.overlay {
   overflow: hidden;
   height: 9999px;
 }
-/* line 222, ../scss/styles.scss */
+/* line 223, ../scss/styles.scss */
 .filters .search-result-box.overlay:after {
   content: '\A';
   position: absolute;
@@ -344,7 +350,7 @@ body {
   background: rgba(0, 0, 0, 0.6);
   opacity: 1;
 }
-/* line 235, ../scss/styles.scss */
+/* line 236, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li {
   position: relative;
   height: 69px;
@@ -352,32 +358,50 @@ body {
   padding-top: 17px;
   padding-bottom: 13px;
 }
-/* line 241, ../scss/styles.scss */
+/* line 242, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li:after {
   content: '';
   background: #dddddd;
   width: 100%;
   height: 1px;
 }
-/* line 248, ../scss/styles.scss */
+/* line 249, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active {
   background-color: #eee;
 }
-/* line 250, ../scss/styles.scss */
+/* line 251, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active.etro-boutique {
   background: url(../icons/etro-boutique-icon.png) no-repeat right;
   background-size: 25px;
   background-position-x: 27px;
   background-position-y: 21px;
 }
-/* line 256, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 251, ../scss/styles.scss */
+  .filters .search-result-box ul#boutique-list > li.active.etro-boutique {
+    background-position-x: 20px;
+  }
+}
+/* line 260, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li.active.etro-outlet {
   background: url(../icons/etro-outlet-icon.png) no-repeat right;
   background-size: 25px;
   background-position-x: 27px;
   background-position-y: 21px;
 }
-/* line 264, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 260, ../scss/styles.scss */
+  .filters .search-result-box ul#boutique-list > li.active.etro-outlet {
+    background-position-x: 20px;
+  }
+}
+@media only screen and (max-width: 959px) {
+  /* line 270, ../scss/styles.scss */
+  .filters .search-result-box ul#boutique-list > li.active a div {
+    padding: 0 34px 0 49px;
+  }
+}
+/* line 278, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -389,7 +413,7 @@ body {
   letter-spacing: normal;
   text-decoration: none;
 }
-/* line 267, ../scss/styles.scss */
+/* line 281, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a:after {
   content: '';
   position: absolute;
@@ -403,32 +427,44 @@ body {
   width: 15px;
   height: 15px;
 }
-/* line 280, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 281, ../scss/styles.scss */
+  .filters .search-result-box ul#boutique-list > li a:after {
+    right: 20px;
+  }
+}
+/* line 297, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div {
   padding: 0 30px 0 59px;
 }
-/* line 282, ../scss/styles.scss */
+@media only screen and (max-width: 959px) {
+  /* line 297, ../scss/styles.scss */
+  .filters .search-result-box ul#boutique-list > li a div {
+    padding: 0 34px 0 20px;
+  }
+}
+/* line 302, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div.name {
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 286, ../scss/styles.scss */
+/* line 306, ../scss/styles.scss */
 .filters .search-result-box ul#boutique-list > li a div.address {
   font-size: 13px;
 }
-/* line 296, ../scss/styles.scss */
+/* line 316, ../scss/styles.scss */
 .filters .filter-by-type.popup-wrapper {
   position: sticky;
   top: 0;
   right: 0;
   z-index: 9;
 }
-/* line 303, ../scss/styles.scss */
+/* line 323, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup {
   display: none;
   position: relative;
 }
-/* line 307, ../scss/styles.scss */
+/* line 327, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup.active {
   display: block;
   position: absolute;
@@ -441,7 +477,7 @@ body {
   margin: 0 0 0 auto;
 }
 @media only screen and (max-width: 479px) {
-  /* line 307, ../scss/styles.scss */
+  /* line 327, ../scss/styles.scss */
   .filters .filter-by-type .filter-by-type-popup.active {
     width: auto;
     left: 0;
@@ -449,7 +485,7 @@ body {
     padding-bottom: 44px;
   }
 }
-/* line 326, ../scss/styles.scss */
+/* line 346, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -462,11 +498,11 @@ body {
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-/* line 330, ../scss/styles.scss */
+/* line 350, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label {
   cursor: pointer;
 }
-/* line 332, ../scss/styles.scss */
+/* line 352, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox] {
   display: inline-block;
   height: 12px;
@@ -480,7 +516,7 @@ body {
   background: transparent;
   cursor: pointer;
 }
-/* line 345, ../scss/styles.scss */
+/* line 365, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup ul li label input[type=checkbox]:checked:before {
   content: '';
   display: block;
@@ -496,7 +532,7 @@ body {
   color: #f75e24;
   margin-right: 8px;
 }
-/* line 367, ../scss/styles.scss */
+/* line 387, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.close {
   position: absolute;
   top: 15px;
@@ -519,7 +555,7 @@ body {
   background-size: contain;
   cursor: pointer;
 }
-/* line 383, ../scss/styles.scss */
+/* line 403, ../scss/styles.scss */
 .filters .filter-by-type .filter-by-type-popup button.apply {
   width: 250px;
   height: 44px;
@@ -537,7 +573,7 @@ body {
   letter-spacing: 0.8;
 }
 @media only screen and (max-width: 479px) {
-  /* line 383, ../scss/styles.scss */
+  /* line 403, ../scss/styles.scss */
   .filters .filter-by-type .filter-by-type-popup button.apply {
     width: calc( 100% + 2px );
     position: absolute;
@@ -548,14 +584,14 @@ body {
   }
 }
 
-/* line 406, ../scss/styles.scss */
+/* line 426, ../scss/styles.scss */
 .ui-autocomplete {
   background-color: #f5f5f5;
   padding: 0 0 0 10px;
   max-width: 300px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 406, ../scss/styles.scss */
+  /* line 426, ../scss/styles.scss */
   .ui-autocomplete {
     max-width: unset;
     width: 100%;
@@ -563,7 +599,7 @@ body {
     padding: 0;
   }
 }
-/* line 418, ../scss/styles.scss */
+/* line 438, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item {
   cursor: pointer;
   border-bottom: 1px solid #fff;
@@ -577,34 +613,34 @@ body {
   letter-spacing: normal;
 }
 @media only screen and (max-width: 959px) {
-  /* line 418, ../scss/styles.scss */
+  /* line 438, ../scss/styles.scss */
   .ui-autocomplete .ui-menu-item {
     text-align: center;
   }
 }
-/* line 426, ../scss/styles.scss */
+/* line 446, ../scss/styles.scss */
 .ui-autocomplete .ui-menu-item:hover {
   background-color: #eee;
   font-weight: 600;
 }
 
-/* line 433, ../scss/styles.scss */
+/* line 453, ../scss/styles.scss */
 #map {
   width: calc( 100% - 480px );
   margin: 0 0 0 480px;
   height: 100vh;
 }
 @media only screen and (max-width: 959px) {
-  /* line 433, ../scss/styles.scss */
+  /* line 453, ../scss/styles.scss */
   #map {
     width: 100%;
     margin: 0;
   }
-  /* line 442, ../scss/styles.scss */
+  /* line 462, ../scss/styles.scss */
   #map.overlay {
     overflow: hidden;
   }
-  /* line 444, ../scss/styles.scss */
+  /* line 464, ../scss/styles.scss */
   #map.overlay:after {
     content: '\A';
     position: absolute;
@@ -618,13 +654,13 @@ body {
   }
 }
 @media only screen and (min-width: 960px) {
-  /* line 433, ../scss/styles.scss */
+  /* line 453, ../scss/styles.scss */
   #map {
     display: block !important;
   }
 }
 
-/* line 463, ../scss/styles.scss */
+/* line 483, ../scss/styles.scss */
 #popup-content {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
@@ -642,12 +678,12 @@ body {
   transform: translateX(-50%);
   display: none;
 }
-/* line 473, ../scss/styles.scss */
+/* line 493, ../scss/styles.scss */
 #popup-content.active {
   display: block;
 }
 @media only screen and (max-width: 959px) {
-  /* line 463, ../scss/styles.scss */
+  /* line 483, ../scss/styles.scss */
   #popup-content {
     top: 0;
     bottom: auto;
@@ -658,7 +694,7 @@ body {
     max-width: 100%;
   }
 }
-/* line 487, ../scss/styles.scss */
+/* line 507, ../scss/styles.scss */
 #popup-content .back {
   display: none;
   position: relative;
@@ -673,7 +709,7 @@ body {
   color: #000;
   border-bottom: 1px solid #7f7f7f;
 }
-/* line 501, ../scss/styles.scss */
+/* line 521, ../scss/styles.scss */
 #popup-content .back:before {
   content: '';
   position: absolute;
@@ -688,12 +724,12 @@ body {
   height: 15px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 487, ../scss/styles.scss */
+  /* line 507, ../scss/styles.scss */
   #popup-content .back {
     display: block;
   }
 }
-/* line 519, ../scss/styles.scss */
+/* line 539, ../scss/styles.scss */
 #popup-content .block-title {
   display: flex;
   flex-direction: column;
@@ -702,19 +738,19 @@ body {
   background-color: #f5f5f5;
 }
 @media only screen and (max-width: 959px) {
-  /* line 519, ../scss/styles.scss */
+  /* line 539, ../scss/styles.scss */
   #popup-content .block-title {
     align-items: start;
     padding: 18px 70px 0 20px;
   }
 }
-/* line 531, ../scss/styles.scss */
+/* line 551, ../scss/styles.scss */
 #popup-content .block-title .name {
   text-transform: uppercase;
   font-size: 13px;
   padding-bottom: 15px;
 }
-/* line 537, ../scss/styles.scss */
+/* line 557, ../scss/styles.scss */
 #popup-content .block-content {
   width: 100%;
   display: flex;
@@ -726,13 +762,13 @@ body {
   position: relative;
 }
 @media only screen and (max-width: 959px) {
-  /* line 537, ../scss/styles.scss */
+  /* line 557, ../scss/styles.scss */
   #popup-content .block-content {
     background-color: #f5f5f5;
     padding: 0 0 18px;
   }
 }
-/* line 552, ../scss/styles.scss */
+/* line 572, ../scss/styles.scss */
 #popup-content .block-content ul {
   width: 100%;
   display: flex;
@@ -740,42 +776,42 @@ body {
   justify-content: space-around;
 }
 @media only screen and (max-width: 959px) {
-  /* line 552, ../scss/styles.scss */
+  /* line 572, ../scss/styles.scss */
   #popup-content .block-content ul {
     display: block;
   }
 }
-/* line 562, ../scss/styles.scss */
+/* line 582, ../scss/styles.scss */
 #popup-content .block-content ul li {
   /*				&.opening-time {
   					position: relative;
   				}*/
 }
-/* line 566, ../scss/styles.scss */
+/* line 586, ../scss/styles.scss */
 #popup-content .block-content ul li .title {
   padding-bottom: 20px;
   text-transform: uppercase;
   font-size: 13px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 562, ../scss/styles.scss */
+  /* line 582, ../scss/styles.scss */
   #popup-content .block-content ul li {
     padding: 15px 20px 10px;
   }
-  /* line 574, ../scss/styles.scss */
+  /* line 594, ../scss/styles.scss */
   #popup-content .block-content ul li.contacts {
     padding: 0 20px 10px;
   }
-  /* line 576, ../scss/styles.scss */
+  /* line 596, ../scss/styles.scss */
   #popup-content .block-content ul li.contacts .title {
     display: none;
   }
-  /* line 581, ../scss/styles.scss */
+  /* line 601, ../scss/styles.scss */
   #popup-content .block-content ul li + li {
     border-top: 1px solid #dddddd;
   }
 }
-/* line 588, ../scss/styles.scss */
+/* line 608, ../scss/styles.scss */
 #popup-content .build-route {
   position: absolute;
   bottom: -18px;
@@ -791,7 +827,7 @@ body {
   border-radius: 20px;
 }
 @media only screen and (max-width: 959px) {
-  /* line 588, ../scss/styles.scss */
+  /* line 608, ../scss/styles.scss */
   #popup-content .build-route {
     margin: 0;
     top: 65px;
@@ -800,7 +836,7 @@ body {
   }
 }
 
-/* line 611, ../scss/styles.scss */
+/* line 631, ../scss/styles.scss */
 .controls {
   margin-top: 10px;
   border: 1px solid transparent;
@@ -812,18 +848,18 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   visibility: hidden;
 }
-/* line 622, ../scss/styles.scss */
+/* line 642, ../scss/styles.scss */
 .controls.visible {
   visibility: visible;
 }
 @media only screen and (max-width: 959px) {
-  /* line 611, ../scss/styles.scss */
+  /* line 631, ../scss/styles.scss */
   .controls {
     display: block;
   }
 }
 
-/* line 631, ../scss/styles.scss */
+/* line 651, ../scss/styles.scss */
 #origin-input,
 #destination-input {
   margin-left: 12px;
@@ -861,7 +897,7 @@ body {
 }
 
 @media only screen and (max-width: 1439px) {
-  /* line 645, ../scss/styles.scss */
+  /* line 665, ../scss/styles.scss */
   #origin-input {
     left: 0 !important;
     top: 50px !important;
@@ -869,20 +905,20 @@ body {
 }
 
 @media only screen and (max-width: 1439px) {
-  /* line 652, ../scss/styles.scss */
+  /* line 672, ../scss/styles.scss */
   #destination-input {
     left: 0 !important;
     top: 95px !important;
   }
 }
 
-/* line 659, ../scss/styles.scss */
+/* line 679, ../scss/styles.scss */
 #origin-input:focus,
 #destination-input:focus {
   border-color: #000;
 }
 
-/* line 664, ../scss/styles.scss */
+/* line 684, ../scss/styles.scss */
 #mode-selector {
   color: #000;
   background-color: #f5f5f5;
@@ -890,14 +926,14 @@ body {
   padding: 5px 11px 0px 11px;
 }
 @media only screen and (max-width: 1439px) {
-  /* line 664, ../scss/styles.scss */
+  /* line 684, ../scss/styles.scss */
   #mode-selector {
     left: 0 !important;
     top: 140px !important;
   }
 }
 
-/* line 676, ../scss/styles.scss */
+/* line 696, ../scss/styles.scss */
 #mode-selector label {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   font-style: normal;
