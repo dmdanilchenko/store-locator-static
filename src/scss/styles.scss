@@ -6,6 +6,23 @@
 @import "compass/reset";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
+/* BP Min
+use as: @media only screen and(min-width: @var) */
+$xsmall-bp-min: 320px;
+$small-bp-min: 480px;
+$medium-bp-min: 768px;
+$large-bp-min: 960px;
+$xlarge-bp-min: 1220px;
+$xxlarge-bp-max: 1440px;
+
+/* BP Max
+use as: @media only screen and(max-width: @var) */
+$xsmall-bp-max: 479px;
+$small-bp-max: 767px;
+$medium-bp-max: 959px;
+$large-bp-max: 1219px;
+
+
 @mixin placeholder {
 	&::-webkit-input-placeholder {@content}
 	&:-moz-placeholder           {@content}
@@ -31,6 +48,12 @@ body {
 	width: 480px;
 	float: left;
 	height: 100vh;
+	
+	@media only screen and(max-width: $medium-bp-max) {
+		width: 100%;
+		float: none;
+		height: auto;
+	}
 	.search-params-box {
 		display: flex;
 		flex-direction: column;
@@ -60,7 +83,7 @@ body {
 				cursor: pointer;
 				background: url(../icons/icon-arrow-down.png) no-repeat right;
 				-webkit-appearance: none;
-				background-position-x: 360px;
+				background-position-x: calc( 100% - 14px );
 				background-size: 15px;
 			}
 		}
@@ -330,6 +353,11 @@ body {
 	width: calc( 100% - 480px );
 	margin: 0 0 0 480px;
 	height: 100vh;
+	
+	@media only screen and(max-width: $medium-bp-max) {
+		width: 100%;
+		margin: 0;
+	}
 }
 
 #popup-content{
