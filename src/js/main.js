@@ -382,18 +382,20 @@ function fillTypeFilter(){
 		searchLocations();
 		$('.filter-by-type-popup').removeClass('active');
 		$('.search-result-box').removeClass('overlay');
+		$('#map').removeClass('overlay');
 	});
 	
 	$('.filter-by-type .open').on('click', function(){
 		$('.filter-by-type-popup').toggleClass('active');
 		$('.search-result-box').toggleClass('overlay');
-        document.getElementById('tab-list').click();
+		$('#map').toggleClass('overlay');
 	});
 	
 	$('.filter-by-type .close').on('click', function(){
 		$('.filter-by-type-popup').removeClass('active');
 		$('.search-result-box').removeClass('overlay');
-	});
+        $('#map').removeClass('overlay');
+    });
 }
 
 function initAddressAutocomplete(filteredBoutiques){
