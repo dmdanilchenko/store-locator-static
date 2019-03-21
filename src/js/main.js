@@ -438,7 +438,7 @@ function createMarker(latlng, markerNode) {
 		infoWindow.open(map, marker);
 		
 		for(var i=0;i<markers.length;i++){
-			markers[i].setIcon('src/icons/marker-'+markers[i].type+'.png'); 
+			markers[i].setIcon({url:'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'.png', scaledSize: new google.maps.Size(26, 40)}); 
 		}
 		
 		marker.setIcon({url:'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'-active.png', scaledSize: new google.maps.Size(32, 50)}); 
@@ -470,7 +470,7 @@ function inactivateItem(){
 	infoWindow.close();
 	
 	for(var i=0;i<markers.length;i++){
-		markers[i].setIcon('src/icons/marker-'+markers[i].type+'.png'); 
+		markers[i].setIcon({url:'src/icons/marker-'+markerNode.type.toLowerCase().replace(' ', '-')+'.png', scaledSize: new google.maps.Size(26, 40)}); 
 	}
 }
 
