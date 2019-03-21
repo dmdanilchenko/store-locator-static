@@ -167,17 +167,17 @@ body {
 				cursor: pointer;
 				
 				&#searchButton {
-					background-image: url(../icons/search-icon.svg);
-					background-position: 7px 9px;
+					background-image: url(../icons/Search_Def_ADA.png);
+					background-position: 8px 9px;
 					background-repeat: no-repeat;
-					background-size: 25px;
+					background-size: 24px;
 					width: 40px;
 				}
 				&#navigatorButton {
-					background-image: url(../icons/nav-arrrow.png);
-					background-position: 8px 11px;
+					background-image: url(../icons/ETRO_Geoloc.png);
+					background-position: 11px 13px;
 					background-repeat: no-repeat;
-					background-size: 24px;
+					background-size: 17px;
 					width: 40px;
 				}
 			}
@@ -409,7 +409,6 @@ body {
 					font-size: 15px;
 					@include font-open-sans($size:13px,$color:#000,$lh:1.2);
 					background-image: url(../icons/close-icon.png);
-					//background-position: 8px 11px;
 					background-repeat: no-repeat;
 					background-size: contain;
 					cursor: pointer;
@@ -633,7 +632,7 @@ body {
 		right: 0;
 		left: 0;
 		margin: 0 auto;
-		background: url(../icons/popup-map-icon.png) no-repeat right;
+		background: url(../icons/ETRO_Arrow.png) no-repeat right;
 		background-size: 37px;
 		width: 37px;
 		height: 37px;
