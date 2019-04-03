@@ -642,3 +642,7 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+$('#popup-content .close').on('click', function(){
+    $('#popup-content').removeClass('active');
+});
